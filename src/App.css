@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* Center everything horizontally */
+  align-items: center; /* Center everything vertically */
+  height: 100vh; /* Full viewport height */
+  background-color: #f0f0f0; /* Optional background color */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column; /* Stack h2 and watch-party vertically */
+  align-items: center; /* Center both items horizontally */
+  gap: 20px; /* Space between h2 and .watch-party */
+  width: 100%; /* Full width of viewport */
+  max-width: 800px; /* Optional max width for the container */
+}
+
+.watch-party {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the cards horizontally */
+  gap: 20px; /* Space between the cards */
+  width: 100%; /* Ensure it takes up full width of the container */
+}
+
+.intro-card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  width: 100%; /* Adjust width of each card */
+  text-align: center; /* Center text inside each card */
+}
+
+.intro-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.intro-card p {
+  margin: 5px 0;
+}
