@@ -22,6 +22,13 @@ function App() {
       movie: "Hercules",
       weather: "raining",
       food: "macaroni cheese",
+
+      id: 4,
+      name: "Safa",
+      movie: "Pride & Prejudice",
+      weather: "rainy",
+      food: "hot chocolate"
+
     },
   ]
 
