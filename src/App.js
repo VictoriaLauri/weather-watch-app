@@ -61,6 +61,7 @@ function App() {
           </div>
         ))}
       </div>
+      <h2>Code First Girls Spring 2025</h2>
     </div>
   )
 }
