@@ -15,20 +15,20 @@ function App() {
       movie: "Hercules",
       weather: "raining",
       food: "macaroni cheese",
-
+    },
+    {
+      id: 3,
+      name: "Kiki",
+      movie: "the one I watch next as I rarely watch movies twice",
+      weather: "sunny, cloudy, rainy, snowy, I love watching movies",
+      food: "olives, wine and kitty cuddles",
+    },
+    {
       id: 4,
       name: "Safa",
       movie: "Pride & Prejudice",
       weather: "rainy",
       food: "hot chocolate"
-
-    },
-    {
-      id: 4,
-      name: "Kiki",
-      movie: "the one I watch next as I rarely watch movies twice",
-      weather: "sunny, cloudy, rainy, snowy, I love watching movies",
-      food: "olives, wine and kitty cuddles",
     }
 
   ]
