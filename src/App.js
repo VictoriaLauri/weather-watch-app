@@ -11,13 +11,6 @@ function App() {
     },
     {
       id: 2,
-      name: "Jane",
-      movie: "The Notebook",
-      weather: "sunny",
-      food: "popcorn",
-    },
-    {
-      id: 3,
       name: "Sadie",
       movie: "Hercules",
       weather: "raining",
