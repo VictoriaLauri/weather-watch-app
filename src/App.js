@@ -28,9 +28,8 @@ function App() {
       name: "Safa",
       movie: "Pride & Prejudice",
       weather: "rainy",
-      food: "hot chocolate"
-    }
-
+      food: "hot chocolate",
+    },
   ]
 
   return (
@@ -55,6 +54,7 @@ function App() {
           </div>
         ))}
       </div>
+      <h2>Code First Girls Spring 2025</h2>
     </div>
   )
 }
