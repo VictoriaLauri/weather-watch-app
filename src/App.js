@@ -29,8 +29,14 @@ function App() {
       movie: "Pride & Prejudice",
       weather: "rainy",
       food: "hot chocolate"
-    }
-
+    },
+    {
+      id: 5,
+      name: "Alberta",
+      movie: "Moana",
+      weather: "sunny",
+      food: "fruit salad",
+    },
   ]
 
   return (
