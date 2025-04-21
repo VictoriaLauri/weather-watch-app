@@ -1,6 +1,8 @@
 import "./App.css"
+import { WeatherDisplay } from "./components/WeatherDisplay/WeatherDisplay"
 
 function App() {
+  
   const intros = [
     {
       id: 1,
@@ -42,7 +44,7 @@ function App() {
   return (
     <div className="App">
       <h2>Group-4-Fullstack Watch Party Picks</h2>
-
+      <WeatherDisplay />
       <div className="watchParty">
         {intros.map((intro) => (
           <div className="blur">
