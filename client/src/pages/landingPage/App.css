@@ -7,7 +7,7 @@
   align-items: center; /* Center everything vertically */
   min-height: 100vh; /* Full viewport height */
 
-  background-image: url('./images/IMG_1638.JPG'); /* added picture background*/
+  background-image: url('../../assets/IMG_1638.JPG'); /* added picture background*/
   background-repeat: no-repeat;
   background-size: cover;
   background-color: skyblue;
