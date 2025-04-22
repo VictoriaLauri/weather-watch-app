@@ -1,26 +1,26 @@
-// Server index
-const express = require('express');
-const cors = require('cors');
-const dotenv = require('dotenv');
-dotenv.config({ path: 'configweatherwatch.env' });
+import cors from 'cors'
+import dotenv from 'dotenv'
+import express from 'express'
+import movieRoutes from './routes/movieRoutes.js'
+import weatherRoutes from './routes/weatherRoutes.js'
+dotenv.config()
 
-const app = express();
+const app = express()
+// backend will run on 8000 to avoid Apple conflict
+const PORT = process.env.PORT
 
-const weatherRoutes = require('./routes/weather-routes');
-// const movieRoutes = require('./routes/movie-routes');
+// Middleware
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    methods: ['GET'],
+    allowedHeaders: ['Content-Type'],
+  })
+)
 
-app.use(cors({
-  origin: "http://localhost:3000",
-  methods: ["GET"],
-  allowedHeaders: ["Content-Type"],
-}));
+app.use('/weather', weatherRoutes)
+app.use('/api', movieRoutes) // all movie routes start with /api
 
-app.use('/weather', weatherRoutes);
-// app.use('/movies', movieRoutes);
-
-const PORT = process.env.PORT || 8000; // Back End to run on port 8000 to avoid Apple conflict
 app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
- 
-
-});
+  console.log(`✅ Server running at http://localhost:${PORT}`)
+})
