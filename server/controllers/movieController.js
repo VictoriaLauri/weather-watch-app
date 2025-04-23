@@ -3,7 +3,7 @@ import { getWeatherData } from '../services/weatherService.js'
 
 export const getMovieRecommendation = async (req, res) => {
   const { lat, lon } = req.query
-  const userAge = 20 // Default age for testing, replace with req.query.age in production
+  const userAge = req.query.age
 
   if (!lat || !lon || isNaN(userAge)) {
     return res
