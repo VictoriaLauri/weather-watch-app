@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import express from 'express'
 import movieRoutes from './routes/movieRoutes.js'
 import weatherRoutes from './routes/weatherRoutes.js'
-dotenv.config({path: 'configweatherwatch.env'})
+dotenv.config({ path: 'configweatherwatch.env' }) // Load environment variables from configweatherwatch.env file
 
 const app = express()
 // backend will run on 8000 to avoid Apple conflict
@@ -17,6 +17,13 @@ app.use(
     allowedHeaders: ['Content-Type'],
   })
 )
+
+//root routes information
+app.get('/', (req, res) => {
+  res.send(
+    'Welcome to the WeatherWatch API! Available routes: /api/movie and /weather'
+  )
+})
 
 app.use('/weather', weatherRoutes)
 app.use('/api', movieRoutes) // all movie routes start with /api
