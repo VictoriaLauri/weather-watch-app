@@ -1,16 +1,30 @@
-import { fetchMovieByGenre } from '../services/tmdbService.js'
+import { fetchMovieByWeatherAndAge } from '../services/tmdbService.js'
+import { getWeatherData } from '../services/weatherService.js'
 
-export const getMovie = async (req, res) => {
-  // Default to 'Comedy' if no genre is provided
-  const genre = 'Comedy'
+export const getMovieRecommendation = async (req, res) => {
+  const { lat, lon } = req.query
+  const userAge = req.query.age
+
+  if (!lat || !lon || isNaN(userAge)) {
+    return res
+      .status(400)
+      .json({ error: 'Missing or invalid lat, lon, or age' })
+  }
 
   try {
-    console.log('Received request:', req.query)
-    const movie = await fetchMovieByGenre(genre)
-    res.status(200).json(movie)
+    // Use the weatherService instead of repeating the fetch logic
+    const weatherData = await getWeatherData(lat, lon)
+    const weatherCondition = weatherData.weather?.[0]?.main || 'Clear'
+
+    // Get a weather + age appropriate movie
+    const movie = await fetchMovieByWeatherAndAge(weatherCondition, userAge)
+
+    res.json({
+      weather: weatherCondition,
+      movie,
+    })
   } catch (err) {
-    res
-      .status(500)
-      .json({ error: 'Could not fetch movie.', details: err.message })
+    console.error('Error getting movie recommendation:', err.message)
+    res.status(500).json({ error: 'Failed to get movie recommendation' })
   }
 }
