@@ -2,7 +2,7 @@ import { fetchMovieByGenre } from '../services/tmdbService.js'
 
 export const getMovie = async (req, res) => {
   // Default to 'Comedy' if no genre is provided
-  const genre = 'Comedy'
+  const genre = 'Drama'
 
   try {
     console.log('Received request:', req.query)
