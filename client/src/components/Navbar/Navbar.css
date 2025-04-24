@@ -1,13 +1,13 @@
 body, html {
     height: 100%; /* Ensures full page height */
     margin: 0; /* Remove default margin */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    padding:0;
   }
   
 
 .navbar {
     width: 100vw; /* full viewport width */
-    box-sizing: border-box; 
+    box-sizing: border-box;
     background: #BBDDFF;
     height: 50px;
     display: flex;
