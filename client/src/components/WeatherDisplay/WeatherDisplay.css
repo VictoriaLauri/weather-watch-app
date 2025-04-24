@@ -5,7 +5,17 @@
     gap: 40px;
     padding: 40px;
     flex-wrap: wrap; /* mobile responsiveness */
+    flex-direction: column;
+    width: 80vw; /* 80% of the viewport width */
+    height: 80vh; /* 70% of the viewport height */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
   }  
+
 
 
 .weather-info-card {
@@ -31,6 +41,24 @@
   .weather-info-card h2 {
     font-size: 2.5rem;
     font-weight: 800;
+  }
+
+  .text-group-1 {
+    margin-bottom: 7%; /* space between each group */
+    display: flex;
+    flex-direction: column;
+    gap: 0px; /* space between each text in the group */
+  }
+
+  .text-group {
+    margin-bottom: 7%; /* space between each group */
+    margin-top: 7%;
+    display: flex;
+    flex-direction: column;
+    gap: 0px; /* space between each text in the group */
+  }
+
+  .text-group p, .text-group h2{
     margin: 0;
   }
 
@@ -41,3 +69,19 @@
     margin: 10px 0;
   }
 
+  .location-button{
+    width: 55%;
+    margin-top: 10px;
+    padding: 5px 5px;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 1rem;
+    border: none; 
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.location-button:hover {
+    background-color: #ebf6ff;    
+  }
+  

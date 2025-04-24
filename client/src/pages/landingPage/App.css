@@ -1,10 +1,8 @@
 .App {
   font-family: 'Inter', sans-serif;
   
-  align-items: center; /* Center everything vertically */
+  align-items: center; /* aligns horizontally in a column */
   min-height: 100vh; /* Full viewport height */
-  margin: 0;
-  padding: 0px;
 
   /*background-image: url('./assets/sunny.png') no-repeat center center fixed; /* need to make the url a variable so it changes with the weather*/
   background-repeat: no-repeat;
@@ -16,32 +14,11 @@
 
 }
 
-.app-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* center the weather+movie container */
-  width: 90%;
-  max-width: 1200px;
-  max-height: 650px;
-  padding: 40px;
-  margin-top: 20px;
-  margin-bottom:20px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-
-.intro-card {
-  padding-bottom: 10px;
-  width: 100%; /* Adjust width of each card */
-  text-align: center; /* Center text inside each card */
-}
 
 
 h2 {
   text-align: left;
-  size: 3em;
+  font-size: 3em;
   font-family: 'Inter', sans-serif;
   color: black;
 }

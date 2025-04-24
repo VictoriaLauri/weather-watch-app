@@ -3,7 +3,7 @@
 export function FormatCondition(condition) {
     switch (condition) {
       case 'clear':
-        return 'sunny'
+        return 'sunny or clear'
       case 'clouds':
         return 'cloudy'
       case 'rain':

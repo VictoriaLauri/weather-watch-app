@@ -23,6 +23,7 @@ export const WeatherDisplay = () => {
   const formatcondition = FormatCondition(condition)
   const mood = getMoodFromWeather(condition)
   const icon = getIconFromWeather(condition)
+
   
   const weatherMain = weather.weather[0].main;
 
@@ -38,18 +39,25 @@ export const WeatherDisplay = () => {
             <p>Hello!<br />You are in</p>
         </div>
 
-        <h2>{location}</h2>
-        <p>{country}</p>
-        
-        <hr />
 
-        <p>and it is</p>
-        <h2>{formatcondition}</h2>
+        <div className="text-group">
+          <h2>{location}</h2>
+          <p>{country}</p>
+        </div>
 
-        <hr />
+        <hr />  
 
-        <p>so you should watch something</p>
-        <h2>{mood}</h2> 
+        <div className="text-group">
+          <p>and it is</p>
+          <h2>{formatcondition}</h2>
+        </div>
+
+          <hr />
+
+        <div className="text-group">
+          <p>so you should watch something</p>
+          <h2>{mood}</h2>
+        </div>
 
         <hr />
 
