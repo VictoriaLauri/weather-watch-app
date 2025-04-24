@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { genreMap } from '../../utils/GenreIDMap'
 import { UserContext } from '../context/UserContext'
 
 export const RecommendMovie = () => {
@@ -46,7 +47,13 @@ export const RecommendMovie = () => {
           <p>{movie.overview}</p>
           <p>Release Date: {movie.release_date}</p>
           <p>Rating: {movie.vote_average}</p>
-          <p>Movie Genre: {}</p>
+          <p>
+            Genres:{' '}
+            {movie.genre_ids
+              .map((id) => genreMap[id])
+              .filter(Boolean)
+              .join(', ')}
+          </p>
 
           {movie.poster_path && (
             <img
