@@ -35,6 +35,7 @@ export const RecommendMovie = () => {
   if (error) return <p>{error}</p>
 
   return (
+    <>
     <div>
       {movie ? (
          //<h2>Recommended Movie: {movie.title}</h2>
@@ -51,5 +52,9 @@ export const RecommendMovie = () => {
         <p>No movie recommendation available.</p>
       )}
     </div>
+    <button className="refresh-button" onClick={() => window.location.reload()}> 
+      Give me another option!
+    </button>
+    </>
   )
 }
