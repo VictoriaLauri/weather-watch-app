@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../context/UserContext'
+import './RecommendMovie.css'
 
 export const RecommendMovie = () => {
   const { coords, userAge, weather } = useContext(UserContext)
@@ -34,14 +35,15 @@ export const RecommendMovie = () => {
   if (error) return <p>{error}</p>
 
   return (
+    <>
     <div>
       {movie ? (
-        <>
-          <h2>Recommended Movie: {movie.title}</h2>
-          <p>{movie.overview}</p>
+         //<h2>Recommended Movie: {movie.title}</h2>
+         //<p>{movie.overview}</p>
+       <>
           {movie.poster_path && (
-            <img
-              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+            <img className="movie-container"
+              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} 
               alt={movie.title}
             />
           )}
@@ -50,5 +52,9 @@ export const RecommendMovie = () => {
         <p>No movie recommendation available.</p>
       )}
     </div>
+    <button className="refresh-button" onClick={() => window.location.reload()}> 
+      Give me another option!
+    </button>
+    </>
   )
 }

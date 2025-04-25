@@ -14,6 +14,7 @@ export const UserProvider = ({ children }) => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords
+        console.log('Geolocation position:', position) 
         setCoords({ latitude, longitude })
       },
       (err) => {
@@ -26,7 +27,11 @@ export const UserProvider = ({ children }) => {
 
   // Once we have coordinates, fetch the weather from backend
   useEffect(() => {
-    if (!coords) return
+    if (!coords) {
+      console.log('Coords are not set yet')
+      return
+    }
+    console.log('Fetching weather with coords:', coords);
 
     const fetchWeather = async () => {
       try {
@@ -35,6 +40,9 @@ export const UserProvider = ({ children }) => {
         )
         if (!response.ok) throw new Error('Failed to fetch weather data')
         const data = await response.json()
+        
+        console.log('Weather data:', data)
+
         setWeather(data)
         setLoading(false)
       } catch (err) {
