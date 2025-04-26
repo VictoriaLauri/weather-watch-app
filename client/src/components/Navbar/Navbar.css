@@ -1,0 +1,46 @@
+body, html {
+    height: 100%; /* Ensures full page height */
+    margin: 0; /* Remove default margin */
+    padding:0;
+  }
+  
+
+.navbar {
+    width: 100vw; /* full viewport width */
+    box-sizing: border-box;
+    background: #BBDDFF;
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+
+  .navbar-container {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between; /*pushes left & right apart */
+    height: 50px;
+    width: 100%;
+    padding: 20px 20px;
+  }
+
+  .navbar-logo {
+    max-width: 240px;
+    display: flex;
+    align-content: left;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .profile-icon{
+    width: 30px;
+  }
+
