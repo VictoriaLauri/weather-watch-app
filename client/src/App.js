@@ -1,24 +1,26 @@
 import React from 'react'
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import BackgroundWrapper from './components/BackgroundWrapper/BackgroundWrapper'
 import { UserProvider } from './components/context/UserContext'
 import Navbar from './components/Navbar/Navbar'
+import HomePageMovieSuggestion from './pages/HomePageMovieSuggestion/HomePageMovieSuggestion'
+import LandingPage from './pages/LandingPage/LandingPage'
+import SigningInPage from './pages/SigningInPage/SigningInPage'
+import SigningUpPage from './pages/SigningUpPage/SigningUpPage'
 
 function App() {
   return (
     <UserProvider>
-      <Router>
-        <BackgroundWrapper>
-          <Navbar />
-          <Routes>
-            <Route path='/' element={<landingPage />} />
-            <Route path='/signin' element={<signingInPage />} />
-            <Route path='/signup' element={<signingUpPage />} />
-            <Route path='/watch' element={<homepageMovieSuggestion />} />
-          </Routes>
-        </BackgroundWrapper>
-      </Router>
+      <BackgroundWrapper>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<LandingPage />} />
+          <Route path='/signin' element={<SigningInPage />} />
+          <Route path='/signup' element={<SigningUpPage />} />
+          <Route path='/watch' element={<HomePageMovieSuggestion />} />
+        </Routes>
+      </BackgroundWrapper>
     </UserProvider>
   )
 }
