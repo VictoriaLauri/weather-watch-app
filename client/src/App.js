@@ -1,18 +1,24 @@
 import React from 'react'
-import { UserProvider } from './components/context/UserContext'
-// import { RecommendMovie } from '../../components/RecommendMovie/RecommendMovie'
-import BackgroundWrapper from './components/BackgroundWrapper/BackgroundWrapper'
-import Navbar from './components/Navbar/Navbar'
-import { WeatherDisplay } from './components/WeatherDisplay/WeatherDisplay'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import './App.css'
+import BackgroundWrapper from './components/BackgroundWrapper/BackgroundWrapper'
+import { UserProvider } from './components/context/UserContext'
+import Navbar from './components/Navbar/Navbar'
 
 function App() {
   return (
     <UserProvider>
-      <BackgroundWrapper>
-        <Navbar />
-        <WeatherDisplay />
-      </BackgroundWrapper>
+      <Router>
+        <BackgroundWrapper>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<landingPage />} />
+            <Route path='/signin' element={<signingInPage />} />
+            <Route path='/signup' element={<signingUpPage />} />
+            <Route path='/watch' element={<homepageMovieSuggestion />} />
+          </Routes>
+        </BackgroundWrapper>
+      </Router>
     </UserProvider>
   )
 }
