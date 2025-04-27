@@ -29,8 +29,9 @@ export const fetchMovieByWeatherAndAge = async (weather, userAge) => {
   // Randomly select a genre ID from the genreMapper as we have more than one genre for each weather condition
   for (let attempt = 0; attempt < 3; attempt++) {
     const randomGenre = genreIds[Math.floor(Math.random() * genreIds.length)]
+    const randomPage = Math.floor(Math.random() * 50) + 1 // This will give access to 1000 movies
 
-    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=${randomGenre}&language=en-US`
+    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=${randomGenre}&language=en-US&page=${randomPage}`
     const res = await axios.get(url)
     const movies = res.data.results
 
@@ -43,7 +44,8 @@ export const fetchMovieByWeatherAndAge = async (weather, userAge) => {
   }
 
   // Fallback: Get a Family movie (genre ID 10751)
-  const fallbackUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=10751&language=en-US`
+  const fallbackPage = Math.floor(Math.random() * 20) + 1 // This will give access to 400 movies
+  const fallbackUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=10751&language=en-US&page=${fallbackPage}`
   const fallbackRes = await axios.get(fallbackUrl)
   const fallbackMovies = fallbackRes.data.results
 

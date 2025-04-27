@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+// import { genreMap } from '../../utils/GenreIDMap'
 import { UserContext } from '../context/UserContext'
 import './RecommendMovie.css'
 
@@ -7,6 +8,7 @@ export const RecommendMovie = () => {
   const [movie, setMovie] = useState(null)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(true)
+  const [shuffleTrigger, setShuffleTrigger] = useState(0)
 
   useEffect(() => {
     if (!coords || !weather) return // Wait until both coordinates and weather are available
@@ -29,32 +31,54 @@ export const RecommendMovie = () => {
     }
 
     fetchMovieRecommendation()
-  }, [coords, weather, userAge]) // Trigger the effect when coordinates, weather, or user age change
+  }, [coords, weather, userAge, shuffleTrigger]) // Trigger the effect when coordinates, weather, or user age change
+
+  const handleShuffle = () => {
+    setShuffleTrigger((prev) => prev + 1) // Increment the shuffle trigger to refetch the movie
+  }
 
   if (loading) return <p>Loading movie recommendation...</p>
   if (error) return <p>{error}</p>
 
   return (
     <>
-    <div>
-      {movie ? (
-         //<h2>Recommended Movie: {movie.title}</h2>
-         //<p>{movie.overview}</p>
-       <>
-          {movie.poster_path && (
-            <img className="movie-container"
-              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} 
-              alt={movie.title}
-            />
-          )}
-        </>
-      ) : (
-        <p>No movie recommendation available.</p>
-      )}
-    </div>
-    <button className="refresh-button" onClick={() => window.location.reload()}> 
-      Give me another option!
-    </button>
+      <div>
+        {movie ? (
+          //<h2>Recommended Movie: {movie.title}</h2>
+          //<p>{movie.overview}</p>
+          <>
+            {movie.poster_path && (
+              <img
+                className='movie-container'
+                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                alt={movie.title}
+              />
+            )}
+            <button onClick={handleShuffle}>Show me another suggestion</button>
+          </>
+        ) : (
+          <p>No movie recommendation available.</p>
+        )}
+      </div>
+      <button
+        className='refresh-button'
+        onClick={() => window.location.reload()}
+      >
+        Give me another option!
+      </button>
     </>
   )
 }
+
+/* <>
+          <h2>Recommended Movie: {movie.title}</h2>
+          <p>{movie.overview}</p>
+          <p>Release Date: {movie.release_date}</p>
+          <p>Rating: {movie.vote_average}</p>
+          <p>
+            Genres:{' '}
+            {movie.genre_ids
+              .map((id) => genreMap[id])
+              .filter(Boolean)
+              .join(', ')}
+          </p> */
