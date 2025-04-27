@@ -17,6 +17,9 @@ const LandingPage = () => {
         <Link to='/signin'>
           <button className='landing-button'>Sign In</button>
         </Link>
+        <Link to='/watch'>
+          <button className='landing-button'>Straight to Suggestions</button>
+        </Link>
       </div>
     </div>
   )

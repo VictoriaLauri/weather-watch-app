@@ -6,7 +6,7 @@ import getIconFromWeather from './GetIconFromWeather'
 import getMoodFromWeather from './GetMoodFromWeather'
 import './WeatherDisplay.css'
 
-export const WeatherDisplay = () => {
+const WeatherDisplay = () => {
   const { weather, loading, locationError } = useContext(UserContext)
 
   if (loading) return <p>Loading weather...</p>
@@ -73,3 +73,5 @@ export const WeatherDisplay = () => {
     </>
   )
 }
+
+export default WeatherDisplay
