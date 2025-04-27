@@ -29,7 +29,7 @@ const SigningUpPage = () => {
         latitude: Number(formData.latitude),
         longitude: Number(formData.longitude),
       });
-      navigate("/signingInPage");
+      navigate("/signin");
     } catch (error) {
       console.error("Error signing up:", error.response?.data || error.message);
     }
