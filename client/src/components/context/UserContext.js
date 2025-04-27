@@ -1,4 +1,5 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useCallback, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const UserContext = createContext()
 
@@ -8,13 +9,24 @@ export const UserProvider = ({ children }) => {
   const [locationError, setLocationError] = useState(null)
   const [weather, setWeather] = useState(null)
   const [loading, setLoading] = useState(true)
+  // initially set movie to null, then check local storage for a stored movie
+  // if found, set movie to that value, otherwise set it to null
+  const [movie, setMovie] = useState(() => {
+    const storedMovie = localStorage.getItem('recommendedMovie')
+    return storedMovie ? JSON.parse(storedMovie) : null
+  })
+  const [loadingMovie, setLoadingMovie] = useState(false)
+  const [movieError, setMovieError] = useState('')
+  const [token, setToken] = useState(() => localStorage.getItem('token'))
+
+  const navigate = useNavigate()
 
   // Get user's geolocation
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords
-        console.log('Geolocation position:', position) 
+        console.log('Geolocation position:', position)
         setCoords({ latitude, longitude })
       },
       (err) => {
@@ -31,7 +43,7 @@ export const UserProvider = ({ children }) => {
       console.log('Coords are not set yet')
       return
     }
-    console.log('Fetching weather with coords:', coords);
+    console.log('Fetching weather with coords:', coords)
 
     const fetchWeather = async () => {
       try {
@@ -40,7 +52,7 @@ export const UserProvider = ({ children }) => {
         )
         if (!response.ok) throw new Error('Failed to fetch weather data')
         const data = await response.json()
-        
+
         console.log('Weather data:', data)
 
         setWeather(data)
@@ -55,13 +67,73 @@ export const UserProvider = ({ children }) => {
     fetchWeather()
   }, [coords])
 
+  const fetchMovieRecommendation = useCallback(async () => {
+    if (!coords || !weather) return
+
+    try {
+      setLoadingMovie(true)
+      setMovieError('')
+      const response = await fetch(
+        `http://localhost:8000/api/movie?lat=${coords.latitude}&lon=${coords.longitude}&age=${userAge}`
+      )
+      if (!response.ok) throw new Error('Failed to fetch movie data')
+      const data = await response.json()
+      setMovie(data.movie)
+      console.log(data.movie)
+    } catch (err) {
+      console.error(err)
+      setMovieError('Failed to fetch movie recommendation')
+    } finally {
+      setLoadingMovie(false)
+    }
+  }, [coords, weather, userAge])
+  // Fetch movie recommendation when weather and user age are available
+
+  // sync movie with local storage
+  useEffect(() => {
+    if (movie) {
+      localStorage.setItem('recommendedMovie', JSON.stringify(movie))
+    }
+  }, [movie])
+
+  // const login = (newToken) => {
+  //   localStorage.setItem('token', newToken)
+  //   setToken(newToken)
+  // }
+
+  const logout = () => {
+    // remove everything user-specific
+    localStorage.removeItem('token')
+    localStorage.removeItem('recommendedMovie')
+    setToken(null)
+    setMovie(null)
+    // redirect to sign-in
+    navigate('/', { replace: true })
+  }
+
   return (
     <UserContext.Provider
-      value={{ coords, userAge, setUserAge, locationError, weather, loading }}
+      value={{
+        coords,
+        userAge,
+        setUserAge,
+        locationError,
+        weather,
+        loading,
+        movie,
+        loadingMovie,
+        movieError,
+        fetchMovieRecommendation,
+        token,
+        logout,
+      }}
     >
       {children}
     </UserContext.Provider>
   )
 }
 
-export {UserContext}
+export { UserContext }
+
+// Double fetch of both weather and movie in dev is normal under React 18 StrictMode, would only run once in production
+// https://reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects
