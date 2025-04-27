@@ -1,13 +1,13 @@
-import cors from 'cors'
 import dotenv from 'dotenv'
+import cors from 'cors'
 import express from 'express'
 import movieRoutes from './routes/movieRoutes.js'
 import weatherRoutes from './routes/weatherRoutes.js'
-dotenv.config({ path: 'configweatherwatch.env' }) // Load environment variables from configweatherwatch.env file
+dotenv.config({ path: './configweatherwatch.env' }) // Load environment variables from configweatherwatch.env file
 
 const app = express()
 // backend will run on 8000 to avoid Apple conflict
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 8000
 
 // Middleware
 app.use(

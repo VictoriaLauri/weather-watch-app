@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { genreMap } from '../../utils/GenreIDMap'
+// import { genreMap } from '../../utils/GenreIDMap'
 import { UserContext } from '../context/UserContext'
+import './RecommendMovie.css'
 
 export const RecommendMovie = () => {
   const { coords, userAge, weather } = useContext(UserContext)
@@ -40,9 +41,37 @@ export const RecommendMovie = () => {
   if (error) return <p>{error}</p>
 
   return (
-    <div>
-      {movie ? (
-        <>
+    <>
+      <div>
+        {movie ? (
+          //<h2>Recommended Movie: {movie.title}</h2>
+          //<p>{movie.overview}</p>
+          <>
+            {movie.poster_path && (
+              <img
+                className='movie-container'
+                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                alt={movie.title}
+              />
+            )}
+            <button onClick={handleShuffle}>Show me another suggestion</button>
+          </>
+        ) : (
+          <p>No movie recommendation available.</p>
+        )}
+      </div>
+      <button
+        className='refresh-button'
+        onClick={() => window.location.reload()}
+      >
+        Give me another option!
+      </button>
+    </>
+  )
+}
+
+{
+  /* <>
           <h2>Recommended Movie: {movie.title}</h2>
           <p>{movie.overview}</p>
           <p>Release Date: {movie.release_date}</p>
@@ -53,19 +82,5 @@ export const RecommendMovie = () => {
               .map((id) => genreMap[id])
               .filter(Boolean)
               .join(', ')}
-          </p>
-
-          {movie.poster_path && (
-            <img
-              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-              alt={movie.title}
-            />
-          )}
-          <button onClick={handleShuffle}>Show me another suggestion</button>
-        </>
-      ) : (
-        <p>No movie recommendation available.</p>
-      )}
-    </div>
-  )
+          </p> */
 }
