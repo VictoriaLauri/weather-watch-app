@@ -70,8 +70,7 @@ export const RecommendMovie = () => {
   )
 }
 
-{
-  /* <>
+/* <>
           <h2>Recommended Movie: {movie.title}</h2>
           <p>{movie.overview}</p>
           <p>Release Date: {movie.release_date}</p>
@@ -83,4 +82,3 @@ export const RecommendMovie = () => {
               .filter(Boolean)
               .join(', ')}
           </p> */
-}
