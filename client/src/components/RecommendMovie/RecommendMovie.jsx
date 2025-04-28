@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
 import './RecommendMovie.css'
@@ -13,17 +13,16 @@ export const RecommendMovie = () => {
     movieError,
     fetchMovieRecommendation,
   } = useContext(UserContext)
-  const [shuffleTrigger, setShuffleTrigger] = useState(0)
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (coords && weather) {
+    if (coords && weather && !movie) {
       fetchMovieRecommendation()
     }
-  }, [coords, weather, userAge, shuffleTrigger, fetchMovieRecommendation]) // Trigger the effect when coordinates, weather, or user age change
+  }, [coords, weather, userAge, movie, fetchMovieRecommendation]) // Trigger the effect when coordinates, weather, or user age change
 
   const handleShuffle = () => {
-    setShuffleTrigger((prev) => prev + 1) // Increment the shuffle trigger to refetch the movie
+    fetchMovieRecommendation()
   }
 
   if (loadingMovie) return <p>Loading movie recommendation...</p>
