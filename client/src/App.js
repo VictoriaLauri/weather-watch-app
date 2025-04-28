@@ -4,11 +4,11 @@ import './App.css'
 import BackgroundWrapper from './components/BackgroundWrapper/BackgroundWrapper'
 import { UserProvider } from './components/context/UserContext'
 import Navbar from './components/Navbar/Navbar'
-import HomepageMovieSuggestion from './pages/HomepageMovieSuggestion/HomepageMovieSuggestion'
-import LandingPage from './pages/LandingPage/LandingPage'
-import MovieInformation from './pages/MovieInformation/MovieInformation'
-import SigningInPage from './pages/SigningInPage/SigningInPage'
-import SigningUpPage from './pages/SigningUpPage/SigningUpPage'
+import HomepageMovieSuggestion from './pagesTemp/HomepageMovieSuggestionTemp/HomepageMovieSuggestionTemp'
+import LandingPage from './pagesTemp/LandingPageTemp/LandingPageTemp'
+import MovieInformation from './pagesTemp/MovieInformationTemp/MovieInformationTemp'
+import SigningInPage from './pagesTemp/SigningInPageTemp/SigningInPageTemp'
+import SigningUpPage from './pagesTemp/SigningUpPageTemp/SigningUpPageTemp'
 
 function App() {
   return (
