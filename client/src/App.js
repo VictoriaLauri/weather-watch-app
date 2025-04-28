@@ -4,7 +4,7 @@ import './App.css'
 import BackgroundWrapper from './components/BackgroundWrapper/BackgroundWrapper'
 import { UserProvider } from './components/context/UserContext'
 import Navbar from './components/Navbar/Navbar'
-import HomePageMovieSuggestion from './pages/HomePageMovieSuggestion/HomePageMovieSuggestion'
+import HomepageMovieSuggestion from './pages/HomepageMovieSuggestion/HomepageMovieSuggestion'
 import LandingPage from './pages/LandingPage/LandingPage'
 import MovieInformation from './pages/MovieInformation/MovieInformation'
 import SigningInPage from './pages/SigningInPage/SigningInPage'
@@ -19,7 +19,7 @@ function App() {
           <Route path='/' element={<LandingPage />} />
           <Route path='/signin' element={<SigningInPage />} />
           <Route path='/signup' element={<SigningUpPage />} />
-          <Route path='/watch' element={<HomePageMovieSuggestion />} />
+          <Route path='/watch' element={<HomepageMovieSuggestion />} />
           <Route path='/movie' element={<MovieInformation />} />
         </Routes>
       </BackgroundWrapper>
