@@ -12,6 +12,8 @@ export const RecommendMovie = () => {
     loadingMovie,
     movieError,
     fetchMovieRecommendation,
+    selectedDecades,
+    setSelectedDecades,
   } = useContext(UserContext)
   const navigate = useNavigate()
 
@@ -20,6 +22,10 @@ export const RecommendMovie = () => {
       fetchMovieRecommendation()
     }
   }, [coords, weather, userAge, movie, fetchMovieRecommendation]) // Trigger the effect when coordinates, weather, or user age change
+
+  useEffect(() => {
+    console.log('Selected Decades:', selectedDecades)
+  }, [selectedDecades]) // Sync movie with local storage
 
   const handleShuffle = () => {
     fetchMovieRecommendation()
@@ -30,6 +36,30 @@ export const RecommendMovie = () => {
 
   const handleMovieClick = () => {
     navigate('/movie') // Navigate to the MovieDetailsPage
+  }
+
+  const decadeOptions = [
+    'Classic Pre-1970s',
+    'Retro 70s and 80s',
+    '90s and 2000s Throwback',
+    'Modern 2010s',
+    '2020s Fresh Hits',
+  ]
+
+  const toggleDecade = (decade) => {
+    if (selectedDecades.includes(decade)) {
+      setSelectedDecades(selectedDecades.filter((d) => d !== decade))
+    } else {
+      setSelectedDecades([...selectedDecades, decade])
+    }
+  }
+
+  const handleFilter = () => {
+    fetchMovieRecommendation() // Trigger the fetch based on selected decades
+  }
+
+  const clearDecades = () => {
+    setSelectedDecades([])
   }
 
   return (
@@ -54,6 +84,27 @@ export const RecommendMovie = () => {
       <button className='refresh-button' onClick={handleShuffle}>
         Give me another option!
       </button>
+      <div className='decade-filters'>
+        {decadeOptions.map((decade) => (
+          <button
+            key={decade}
+            onClick={() => toggleDecade(decade)}
+            className={selectedDecades.includes(decade) ? 'selected' : ''}
+          >
+            {decade}
+          </button>
+        ))}
+        {selectedDecades.length > 0 && (
+          <>
+            <button onClick={handleFilter} className='filter-button'>
+              Filter by Era
+            </button>
+            <button onClick={clearDecades} className='clear-button'>
+              Clear Filters
+            </button>
+          </>
+        )}
+      </div>
     </>
   )
 }
