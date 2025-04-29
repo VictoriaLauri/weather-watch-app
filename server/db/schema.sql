@@ -66,7 +66,7 @@ CREATE TABLE recommendations (
 CREATE TABLE weather_logs (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT,
-  condition VARCHAR(50),
+  condition _weather_log VARCHAR(50),
   temperature DECIMAL(5,2),
   humidity INT,
   logged_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
