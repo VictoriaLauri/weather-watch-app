@@ -22,7 +22,12 @@ const BackgroundWrapper = ({ children, backgroundOverride }) => {
     }
   };
 
-  const backgroundImage = backgroundOverride || (weather ? getBackgroundImage(weather.weather[0].main) : 'assets/sunny.png');
+  const backgroundImage = backgroundOverride 
+  ? backgroundOverride 
+  : weather 
+    ? getBackgroundImage(weather.weather[0].main) 
+    : '/backgrounds/sunny.png';
+
 
   return (
     <div
