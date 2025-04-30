@@ -1,0 +1,11 @@
+/* body{
+    background-image: url('../../assets/sign_up_background.png')!important;
+    background-size: cover!important;
+    background-position: center!important;
+    background-repeat: no-repeat!important;
+ 
+} */
+
+.app-container{
+    background-color: transparent;
+}
