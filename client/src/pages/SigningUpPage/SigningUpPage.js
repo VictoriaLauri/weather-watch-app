@@ -11,8 +11,7 @@ const SigningUpPage = () => {
     username: "",
     password: "",
     age: "",
-    latitude: "",
-    longitude: "",
+    email:""
   });
 
   const handleChange = (e) => {
@@ -29,8 +28,7 @@ const SigningUpPage = () => {
       await axios.post("/api/auth/register", {
         ...formData,
         age: Number(formData.age), // age needs to be a number!
-        latitude: Number(formData.latitude),
-        longitude: Number(formData.longitude),
+        email: String(formData.email), // ensure email is treated as a string
       });
       navigate("/signingInPage");
     } catch (error) {
@@ -68,23 +66,14 @@ const SigningUpPage = () => {
           required
         />
         <input
-          type="number"
-          step="any"
-          name="latitude"
-          placeholder="Latitude"
-          value={formData.latitude}
+          type="text"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
           onChange={handleChange}
           required
         />
-        <input
-          type="number"
-          step="any"
-          name="longitude"
-          placeholder="Longitude"
-          value={formData.longitude}
-          onChange={handleChange}
-          required
-        />
+    
         <button type="submit">Register</button>
       </form>
     </div>
