@@ -41,6 +41,7 @@ const SigningUpPage = () => {
   return (
     <BackgroundWrapper backgroundOverride={signUpBackground}>
       <div className="glassbox">
+        <div className="formContainer">
         <h4>Create account</h4>
         <p>Sign up to get started</p>
         <form onSubmit={handleSubmit}>
@@ -92,9 +93,12 @@ const SigningUpPage = () => {
               }}
             ></i>
         </div>
+        
 
-          <button type="submit">Register</button>
+          <button type="submit">Sign Up</button>
+          <p>Already have an account? Sign up</p>
         </form>
+      </div>
       </div>
     </BackgroundWrapper>
   )
