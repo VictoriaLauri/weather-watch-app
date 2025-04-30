@@ -113,3 +113,7 @@ button[type=submit]{
     box-sizing: border-box;
     margin-top: 1em;
 }
+.signInLink{
+    color: white;
+    font-weight: 700;
+}
