@@ -13,8 +13,7 @@ CREATE TABLE users (
   username VARCHAR(50) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL,
   age INT NOT NULL,
-  latitude DECIMAL(9,6),
-  longitude DECIMAL(9,6),
+  email VARCHAR(255) NOT NULL UNIQUE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
