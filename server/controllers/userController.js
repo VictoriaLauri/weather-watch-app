@@ -2,7 +2,7 @@ import { db } from '../db/db.js';
 import bcrypt from 'bcrypt';
 
 export const createUser = async (req, res) => {
-  const { username, password, age, latitude, longitude } = req.body;
+  const { username, password, age, email } = req.body;
 
   try {
     const [existingUser] = await db.execute('SELECT * FROM users WHERE username = ?', [username]);
@@ -14,10 +14,10 @@ export const createUser = async (req, res) => {
 
     const [result] = await db.execute(
       'INSERT INTO users (username, password, age, latitude, longitude) VALUES (?, ?, ?, ?, ?)',
-      [username, hashedPassword, age, latitude, longitude]
+      [username, hashedPassword, age, email]
     );
 
-    res.status(201).json({ id: result.insertId, username, age, latitude, longitude });
+    res.status(201).json({ id: result.insertId, username, age, email });
   } catch (err) {
     console.error('Error creating user:', err);
     res.status(500).json({ error: 'Failed to create user' });
