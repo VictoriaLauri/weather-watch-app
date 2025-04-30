@@ -33,7 +33,7 @@ const SigningUpPage = () => {
         age: Number(formData.age), // age needs to be a number!
         email: String(formData.email), // ensure email is treated as a string
       })
-      navigate("/signingInPage")
+      navigate("/ProfilePage")
     } catch (error) {
       console.error("Error signing up:", error.response?.data || error.message)
     }
