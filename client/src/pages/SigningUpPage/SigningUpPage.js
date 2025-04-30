@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import './SigningUpPage.css'
+import signUpBackground from '../../assets/sign_up_background.png'
+import BackgroundWrapper from "../../components/BackgroundWrapper/BackgroundWrapper";
 
 const SigningUpPage = () => {
   const navigate = useNavigate();
@@ -36,6 +39,7 @@ const SigningUpPage = () => {
   };
 
   return (
+    <BackgroundWrapper backgroundOveride = {signUpBackground}>
     <div>
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
@@ -84,7 +88,9 @@ const SigningUpPage = () => {
         <button type="submit">Register</button>
       </form>
     </div>
+    </BackgroundWrapper>
   );
+  
 };
 
 export default SigningUpPage;
