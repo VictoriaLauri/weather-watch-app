@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import axios from "axios"
 import "./SigningUpPage.css"
 import signUpBackground from "../../assets/sign_up_background.png"
@@ -96,7 +97,7 @@ const SigningUpPage = () => {
         
 
           <button type="submit">Sign Up</button>
-          <p>Already have an account? Sign up</p>
+          <p>Already have an account? <Link className="signInLink" to="/signingInPage">Sign in</Link></p>
         </form>
       </div>
       </div>
