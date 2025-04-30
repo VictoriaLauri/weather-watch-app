@@ -37,7 +37,7 @@ const SigningUpPage = () => {
   };
 
   return (
-    <BackgroundWrapper backgroundOveride = {signUpBackground}>
+    <BackgroundWrapper backgroundOverride = {signUpBackground}>
     <div>
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
@@ -77,7 +77,7 @@ const SigningUpPage = () => {
         <button type="submit">Register</button>
       </form>
     </div>
-    </BackgroundWrapper>
+    </BackgroundWrapper> 
   );
   
 };
