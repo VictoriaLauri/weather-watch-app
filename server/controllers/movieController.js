@@ -2,14 +2,15 @@ import { fetchMovieByWeatherAndAge } from '../services/tmdbService.js'
 import { getWeatherData } from '../services/weatherService.js'
 
 export const getMovieRecommendation = async (req, res) => {
-  const { lat, lon } = req.query
-  const userAge = req.query.age
+  const { lat, lon, age, decades } = req.query
 
-  if (!lat || !lon || isNaN(userAge)) {
+  if (!lat || !lon || isNaN(age)) {
     return res
       .status(400)
       .json({ error: 'Missing or invalid lat, lon, or age' })
   }
+
+  const selectedDecades = decades ? decades.split(',') : []
 
   try {
     // Use the weatherService instead of repeating the fetch logic
@@ -17,7 +18,11 @@ export const getMovieRecommendation = async (req, res) => {
     const weatherCondition = weatherData.weather?.[0]?.main || 'Clear'
 
     // Get a weather + age appropriate movie
-    const movie = await fetchMovieByWeatherAndAge(weatherCondition, userAge)
+    const movie = await fetchMovieByWeatherAndAge(
+      weatherCondition,
+      age,
+      selectedDecades
+    )
 
     res.json({
       weather: weatherCondition,

@@ -15,8 +15,8 @@ const MovieInformation = () => {
   }, [])
 
   const handleBack = () => {
-    // Navigate back to the HomePageMovieSuggestion or to a default page
-    navigate(-1) // This goes back to the previous page
+    // Navigate back to the HomePageMovieSuggestion
+    navigate('/watch')
   }
 
   // Function to extract the release year
