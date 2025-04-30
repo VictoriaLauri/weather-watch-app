@@ -17,6 +17,7 @@ export const UserProvider = ({ children }) => {
   })
   const [loadingMovie, setLoadingMovie] = useState(false)
   const [movieError, setMovieError] = useState('')
+  const [selectedDecades, setSelectedDecades] = useState([])
   const [token, setToken] = useState(() => localStorage.getItem('token'))
 
   const navigate = useNavigate()
@@ -69,12 +70,13 @@ export const UserProvider = ({ children }) => {
 
   const fetchMovieRecommendation = useCallback(async () => {
     if (!coords || !weather) return
+    const decadeQuery = selectedDecades.join(',')
 
     try {
       setLoadingMovie(true)
       setMovieError('')
       const response = await fetch(
-        `http://localhost:8000/api/movie?lat=${coords.latitude}&lon=${coords.longitude}&age=${userAge}`
+        `http://localhost:8000/api/movie?lat=${coords.latitude}&lon=${coords.longitude}&age=${userAge}&decades=${decadeQuery}`
       )
       if (!response.ok) throw new Error('Failed to fetch movie data')
       const data = await response.json()
@@ -86,8 +88,8 @@ export const UserProvider = ({ children }) => {
     } finally {
       setLoadingMovie(false)
     }
-  }, [coords, weather, userAge])
-  // Fetch movie recommendation when weather and user age are available
+  }, [coords, weather, userAge, selectedDecades])
+  // Fetch movie recommendation when weather, decades filter and user age are available
 
   // sync movie with local storage
   useEffect(() => {
@@ -124,6 +126,8 @@ export const UserProvider = ({ children }) => {
         loadingMovie,
         movieError,
         fetchMovieRecommendation,
+        selectedDecades,
+        setSelectedDecades,
         token,
         logout,
       }}

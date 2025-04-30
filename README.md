@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# Weather Watch App 🌦️🎬
+## About The Project
+Weather Watch is a web application that recommends movies based on current weather conditions of the user's location. It allows users to register, log in, and get personalised movie recommendations. The app uses JWT (JSON Web Token) for authentication and secure communication between the client and server.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+* User Authentication: Register and log in with username and password.
+* Weather-Based Movie Recommendations: Get movie suggestions based on the current weather and your age.
+* Watchlists: Add movies to your personal watchlist for easy access later.
+* Profile Management: View and edit your personal profile details.
 
-## Available Scripts
+## 💻 Technologies Used 
+* Frontend: React.js
+* Backend: Express.js
+* Database: MySQL
+* Authentication: JWT (JSON Web Token)
+* External APIs: TMDB (Movie Data) & Weather API (Weather Data)
+* Other Libraries: Axios, CORS, bcrypt, dotenv, etc.
 
-In the project directory, you can run:
+## 🔐 JWT Authentication
+* JWT is used for secure user authentication in the app.
+* When you log in, a JWT is generated and returned to the client.
+* The client uses the token to access protected routes like movie recommendations.
 
-### `npm start`
+## 📝 Setup Instructions
+### 1. Clone the Repository
+```git clone ```<br/>
+```cd weather-watch-app```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2. Backend Setup
+#### Navigate to the server directory and install dependencies:
+```cd server```<br/>
+```npm install```
+  
+#### Create an .env file in the backend folder and add the following keys: 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* TMDB_API_KEY=your_tmdb_api_key
+* WEATHER_API_KEY=your_weather_api_key
+* JWT_SECRET=your_secret_key
+* DB_HOST=localhost
+* DB_USER=root
+* DB_PASSWORD=your_db_password
+* DB_NAME=weather_watch_app
+* PORT=8000
 
-### `npm test`
+#### Run the backend:   
+``` npm run dev```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. Frontend Setup
+#### Navigate to the frontend directory and install dependencies:
+```cd client```<br/>
+```npm install```
+ 
+#### Run the frontend:
+``` npm start```
+ 
 
-### `npm run build`
+## 🔬 How to Test the App
+### Testing JWT Authentication
+* In Developer Tools:
+    * After logging in, store the JWT in localStorage or sessionStorage in your browser.
+    * Add the token to the Authorization header as Bearer <your-jwt> when making requests to protected routes (like movie recommendations).
+* In Postman:
+    * First, log in to the app by sending a POST request to /api/auth/login with valid user credentials (username and password).
+    * Copy the JWT from the response.
+    * Send a GET request to /api/recommendation with the Authorisation header as Bearer <your-jwt>.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ❌ Common Errors
+* CORS Issue: If you're running into CORS issues, ensure that the frontend and backend are running on different ports. Add "proxy": "http://localhost:8000" in the frontend's package.json to fix CORS during development.
+* JWT Errors: If the JWT is missing or invalid, the server will respond with a 401 Unauthorised or 403 Forbidden status. Make sure to include the JWT in the header correctly.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🔗 Learn More
+* [JWT: JWT Introduction](https://jwt.io/introduction/)
+* [React: React Documentation](https://react.dev/learn)
+* [Express: Express.js Documentation](https://expressjs.com/)
+* [TMDB API: TMDB API Documentation](https://developer.themoviedb.org/docs/getting-started)
+* [Weather API: OpenWeather API](https://openweathermap.org/api)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
