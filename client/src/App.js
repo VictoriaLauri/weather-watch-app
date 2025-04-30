@@ -9,6 +9,7 @@ import LandingPage from './pages/LandingPage/LandingPage'
 import MovieInformation from './pages/MovieInformation/MovieInformation'
 import SigningInPage from './pages/SigningInPage/SigningInPage'
 import SigningUpPage from './pages/SigningUpPage/SigningUpPage'
+import ProfilePage from './pages/ProfilePage/ProfilePage'
 
 function App() {
   return (
@@ -21,10 +22,11 @@ function App() {
           <Route path='/signup' element={<SigningUpPage />} />
           <Route path='/watch' element={<HomepageMovieSuggestion />} />
           <Route path='/movie' element={<MovieInformation />} />
+          <Route path='/profile' element={<ProfilePage />} />
         </Routes>
       </BackgroundWrapper>
     </UserProvider>
-  )
+  );
 }
 
-export default App
+export default App;
