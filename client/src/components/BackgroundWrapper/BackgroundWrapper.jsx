@@ -33,6 +33,8 @@ const BackgroundWrapper = ({ children, backgroundOverride }) => {
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         backgroundAttachment: 'fixed',
+        minHeight: '100vh',
+        width:'100%'
       }}
     >
       {children}
