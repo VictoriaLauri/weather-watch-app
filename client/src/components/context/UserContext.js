@@ -22,6 +22,13 @@ export const UserProvider = ({ children }) => {
 
   const navigate = useNavigate()
 
+  //token localStorage sync
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem("token", token);
+    }
+  }, [token]);
+
   // Get user's geolocation
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(

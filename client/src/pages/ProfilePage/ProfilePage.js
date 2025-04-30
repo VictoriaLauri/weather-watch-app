@@ -1,116 +1,104 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { UserContext } from '../../components/context/UserContext'
+import React, { useState, useContext, useEffect } from 'react';
+import { UserContext } from '../context/UserContext';
+import axios from 'axios';
 
 const ProfilePage = () => {
-  const { weather, userAge, setUserAge, token } = useContext(UserContext)
+  const { userAge, setUserAge, token } = useContext(UserContext);
   const [formData, setFormData] = useState({
-    name: '',
-    location: '',
-    email: '',
-    password: '',
-  })
+    age: '',
+    latitude: '',
+    longitude: '',
+  });
 
+  
   useEffect(() => {
     if (token) {
       setFormData({
-        name: 'John Doe',
-        location: 'New York',
-        email: 'john@example.com',
-        password: '',
-      })
+        age: userAge || '',
+        latitude: '',
+        longitude: '',
+      });
     }
-  }, [token])
+  }, [token, userAge]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }))
-  }
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Profile updated:', formData)
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.patch(
+        'http://localhost:8000/api/auth/update',
+        {
+          age: Number(formData.age),
+          latitude: Number(formData.latitude),
+          longitude: Number(formData.longitude),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setUserAge(formData.age); 
+      alert('Profile updated successfully!');
+    } catch (error) {
+      console.error('Update failed:', error.response?.data || error.message);
+      alert('Error updating profile');
+    }
+  };
 
   return (
-    <div className='profile-page'>
-      <header className='header'>
-        <h1>Profile</h1>
-      </header>
-
-      <div className='profile-container'>
-        <div className='profile-head'>
-          <div className='glass-box'>
-            <img
-              src='/path/to/cloud-play-image.jpg'
-              alt='Cloud Play'
-              className='profile-image'
-            />
-            <div className='profile-info'>
-              <p className='name'>{formData.name || 'Your Name'}</p>
-              <p className='location'>{formData.location || 'Your Location'}</p>
-            </div>
-          </div>
+    <div className="profile-page">
+      <h1>Profile</h1>
+      <form onSubmit={handleSubmit} className="form">
+        <div className="form-group">
+          <label htmlFor="age">Age</label>
+          <input
+            type="number"
+            id="age"
+            name="age"
+            value={formData.age}
+            onChange={handleChange}
+            placeholder="Enter your age"
+            required
+          />
         </div>
-
-        <form className='form' onSubmit={handleSubmit}>
-          <div className='form-group'>
-            <label htmlFor='name'>Name</label>
-            <input
-              type='text'
-              id='name'
-              name='name'
-              value={formData.name}
-              onChange={handleChange}
-              placeholder='Enter your name'
-            />
-          </div>
-
-          <div className='form-group'>
-            <label htmlFor='location'>Location</label>
-            <input
-              type='text'
-              id='location'
-              name='location'
-              value={formData.location}
-              onChange={handleChange}
-              placeholder='Enter your location'
-            />
-          </div>
-
-          <div className='form-group'>
-            <label htmlFor='email'>Email</label>
-            <input
-              type='email'
-              id='email'
-              name='email'
-              value={formData.email}
-              onChange={handleChange}
-              placeholder='Enter your email'
-            />
-          </div>
-
-          <div className='form-group'>
-            <label htmlFor='password'>Password</label>
-            <input
-              type='password'
-              id='password'
-              name='password'
-              value={formData.password}
-              onChange={handleChange}
-              placeholder='Enter your password'
-            />
-          </div>
-
-          <button type='submit' className='edit-profile-btn'>
-            Edit Profile
-          </button>
-        </form>
-      </div>
+        <div className="form-group">
+          <label htmlFor="latitude">Latitude</label>
+          <input
+            type="number"
+            step="any"
+            id="latitude"
+            name="latitude"
+            value={formData.latitude}
+            onChange={handleChange}
+            placeholder="Enter your latitude"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="longitude">Longitude</label>
+          <input
+            type="number"
+            step="any"
+            id="longitude"
+            name="longitude"
+            value={formData.longitude}
+            onChange={handleChange}
+            placeholder="Enter your longitude"
+            required
+          />
+        </div>
+        <button type="submit" className="edit-profile-btn">
+          Update Profile
+        </button>
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default ProfilePage
+export default ProfilePage;
+

@@ -5,6 +5,7 @@ import { db } from '../db/db.js';
 
 const router = express.Router();
 
+//register
 router.post('/register', async (req, res) => {
   const { username, password, age, latitude, longitude } = req.body;
 
@@ -34,7 +35,7 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Login
+//login
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
@@ -61,6 +62,31 @@ router.post('/login', async (req, res) => {
   } catch (err) {
     console.error('Login error:', err.message);
     res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+//update profile
+router.put('/update', async (req, res) => {
+  const { id, username, age, latitude, longitude, password } = req.body;
+
+  try {
+    let query = 'UPDATE users SET username = ?, age = ?, latitude = ?, longitude = ?';
+    const values = [username, age, latitude, longitude];
+
+    if (password) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      query += ', password = ?';
+      values.push(hashedPassword);
+    }
+
+    query += ' WHERE id = ?';
+    values.push(id);
+
+    await db.query(query, values);
+    res.json({ message: 'Profile updated successfully' });
+  } catch (err) {
+    console.error('Profile update error:', err.message);
+    res.status(500).json({ message: 'Failed to update profile' });
   }
 });
 

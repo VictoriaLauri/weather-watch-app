@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { UserContext } from "../../components/context/UserContext";
 
 const SigningUpPage = () => {
   const navigate = useNavigate();
+  const{ setToken } = useContext(UserContext);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -23,12 +25,17 @@ const SigningUpPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/auth/register", {
+      const response = await axios.post("/api/auth/register", {
         ...formData,
-        age: Number(formData.age), // age needs to be a number!
+        age: Number(formData.age), // age needs to be a number
         latitude: Number(formData.latitude),
         longitude: Number(formData.longitude),
       });
+
+      const token = response.data.token;
+      localStorage.setItem("token", token); // save token to localStorage
+      setToken(token); 
+
       navigate("/signin");
     } catch (error) {
       console.error("Error signing up:", error.response?.data || error.message);
