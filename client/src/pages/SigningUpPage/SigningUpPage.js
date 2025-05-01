@@ -1,10 +1,11 @@
 import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { createMemorySessionStorage, useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import "./SigningUpPage.css"
 import signUpBackground from "../../assets/sign_up_background.png"
 import BackgroundWrapper from "../../components/BackgroundWrapper/BackgroundWrapper"
+
 
 const SigningUpPage = () => {
   const navigate = useNavigate()
@@ -97,7 +98,7 @@ const SigningUpPage = () => {
         
 
           <button type="submit">Sign Up</button>
-          <p>Already have an account? <Link className="signInLink" to="/signingInPage">Sign in</Link></p>
+          <p>Already have an account? <Link className="signInLink" to='../signin'>Sign in</Link></p>
         </form>
       </div>
       </div>
