@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import './SigningInPage.css'
+import BackgroundWrapper from "../../components/BackgroundWrapper/BackgroundWrapper";
+import signinback from '../../assets/sigin_in_background.png'
+import { Link } from "react-router-dom";
+import { UserContext } from "../../components/context/UserContext";
 
 const SigningInPage = () => {
   const navigate = useNavigate();
@@ -8,6 +13,9 @@ const SigningInPage = () => {
     username: "",
     password: "",
   });
+
+const {login}=useContext(UserContext)
+const [showPassword, setShowPassword]=useState(false)
 
   const [error, setError] = useState("");
   const handleChange = (e) => {
@@ -23,7 +31,8 @@ const SigningInPage = () => {
     try {
       const response = await axios.post("http://localhost:8000/api/auth/login", formData);
       if (response.status === 200) {
-        localStorage.setItem("token", response.data.token);
+        login(response.data.token)
+        // localStorage.setItem("token", response.data.token);
         navigate("/watch"); // 
       }
     } catch (error) {
@@ -31,8 +40,11 @@ const SigningInPage = () => {
     }
   };
   return (
-    <div>
-      <h2>Sign In</h2>
+    <BackgroundWrapper backgroundOverride={signinback}>
+    <div className="glassbox">
+    <div className="formContainer">
+      <h4>Welcome back</h4>
+      <p>Log in with your email</p>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
@@ -43,19 +55,36 @@ const SigningInPage = () => {
           placeholder="Username"
           required
         />
+<div className="passwordInputContainer">
         <input
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             name="password"
             value={formData.password}
             onChange={handleChange}
             placeholder="Password"
             required
           />
+             <i
+              className={`bi ${showPassword ? "bi-eye" : "bi-eye-slash"}`}
+              onClick={() => setShowPassword((prev) => !prev)}
+              style={{
+                position: 'absolute',
+                right: '10px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                cursor: 'pointer',
+                color: '#999'
+              }}
+            ></i>
+            </div>
 
           <button type="submit">Log In</button>
+          <p>New to WeatherWatch? <Link className="signInLink" to='../signup'>Create an account</Link></p>
           </form>
         </div>
-      );
+        </div>
+        </BackgroundWrapper>
+        );
     };
 
     export default SigningInPage;
