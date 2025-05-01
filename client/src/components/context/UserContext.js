@@ -98,10 +98,10 @@ export const UserProvider = ({ children }) => {
     }
   }, [movie])
 
-  // const login = (newToken) => {
-  //   localStorage.setItem('token', newToken)
-  //   setToken(newToken)
-  // }
+  const login = (newToken) => {
+    localStorage.setItem('token', newToken)
+    setToken(newToken)
+  }
 
   const logout = () => {
     // remove everything user-specific
@@ -129,6 +129,7 @@ export const UserProvider = ({ children }) => {
         selectedDecades,
         setSelectedDecades,
         token,
+        login,
         logout,
       }}
     >

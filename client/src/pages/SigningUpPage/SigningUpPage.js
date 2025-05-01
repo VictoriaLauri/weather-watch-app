@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { createMemorySessionStorage, useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import "./SigningUpPage.css"
@@ -15,7 +15,8 @@ const SigningUpPage = () => {
     email: "",
   })
 
-  const [showPassword, setShowPassword]=useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const [error, setError] = useState("")
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -28,14 +29,24 @@ const SigningUpPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios.post("/api/auth/register", {
+      const response = await axios.post("/api/auth/register", {
         ...formData,
         age: Number(formData.age), // age needs to be a number!
         email: String(formData.email), // ensure email is treated as a string
       })
-      navigate("/ProfilePage")
+      if (response.status === 201) {
+        navigate("/profile")
+      }
     } catch (error) {
-      console.error("Error signing up:", error.response?.data || error.message)
+      if (error.response && error.response.data.message) {
+        setError(error.response.data.message)
+      } else {
+        setError('An unexpected error occured. Please try again')
+        console.error(
+          "Error signing up:",
+          error.response?.data || error.message
+        )
+      }
     }
   }
 
@@ -43,63 +54,67 @@ const SigningUpPage = () => {
     <BackgroundWrapper backgroundOverride={signUpBackground}>
       <div className="glassbox">
         <div className="formContainer">
-        <h4>Create account</h4>
-        <p>Sign up to get started</p>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="number"
-            name="age"
-            placeholder="Age"
-            value={formData.age}
-            onChange={handleChange}
-            required
-          />
+          <h4>Create account</h4>
+          <p>Sign up to get started</p>
+          <form onSubmit={handleSubmit}>
+            {error && <p style={{ color: "red" }}>{error}</p>}
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="number"
+              name="age"
+              placeholder="Age"
+              value={formData.age}
+              onChange={handleChange}
+              required
+            />
 
-          <input
-            type="text"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        
-<div className="passwordInputContainer">
-          <input
-            type={showPassword ? 'text' : 'password'}
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-            <i
-              className={`bi ${showPassword ? "bi-eye" : "bi-eye-slash"}`}
-              onClick={() => setShowPassword((prev) => !prev)}
-              style={{
-                position: 'absolute',
-                right: '10px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                cursor: 'pointer',
-                color: '#999'
-              }}
-            ></i>
+            <input
+              type="text"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+
+            <div className="passwordInputContainer">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+              <i
+                className={`bi ${showPassword ? "bi-eye" : "bi-eye-slash"}`}
+                onClick={() => setShowPassword((prev) => !prev)}
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
+                  color: "#999",
+                }}></i>
+            </div>
+
+            <button type="submit">Sign Up</button>
+            <p>
+              Already have an account?{" "}
+              <Link className="signInLink" to="../signin">
+                Sign in
+              </Link>
+            </p>
+          </form>
         </div>
-        
-
-          <button type="submit">Sign Up</button>
-          <p>Already have an account? <Link className="signInLink" to="/signingInPage">Sign in</Link></p>
-        </form>
-      </div>
       </div>
     </BackgroundWrapper>
   )
