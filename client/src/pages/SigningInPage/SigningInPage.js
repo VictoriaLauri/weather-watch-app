@@ -33,7 +33,7 @@ const [showPassword, setShowPassword]=useState(false)
       if (response.status === 200) {
         login(response.data.token)
         // localStorage.setItem("token", response.data.token);
-        navigate("/watch"); // 
+        navigate("/profile"); // 
       }
     } catch (error) {
       setError(error.response?.data.message || "Invalid credentials. Please try again.");
