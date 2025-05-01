@@ -7,7 +7,7 @@ const router = express.Router();
 
 //register
 router.post('/register', async (req, res) => {
-  const { username, password, age, latitude, longitude } = req.body;
+  const { username, password, age, email } = req.body;
 
   try {
     const [existing] = await db.query('SELECT * FROM users WHERE username = ?', [username]);
@@ -18,8 +18,8 @@ router.post('/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const [result] = await db.query(
-      'INSERT INTO users (username, password, age, latitude, longitude) VALUES (?, ?, ?, ?, ?)',
-      [username, hashedPassword, age, latitude, longitude]
+      'INSERT INTO users (username, password, age, email) VALUES (?, ?, ?, ?)',
+      [username, hashedPassword, age, email]
     );
 
     const token = jwt.sign(

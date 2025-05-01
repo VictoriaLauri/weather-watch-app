@@ -28,6 +28,25 @@ const ProfilePage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const { age, latitude, longitude } = formData;
+
+    // validation
+    if (!age || age <= 0) {
+      alert("Please enter a valid age.");
+      return;
+    }
+
+    if (latitude === "" || isNaN(latitude) || latitude < -90 || latitude > 90) {
+      alert("Please enter a valid latitude between -90 and 90.");
+      return;
+    }
+
+    if (longitude === "" || isNaN(longitude) || longitude < -180 || longitude > 180) {
+      alert("Please enter a valid longitude between -180 and 180.");
+      return; 
+    }
+
     try {
       const response = await axios.patch(
         'http://localhost:8000/api/auth/update',

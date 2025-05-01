@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 
-const BackgroundWrapper = ({ children }) => {
+const BackgroundWrapper = ({ children, backgroundOverride }) => {
   const { weather } = useContext(UserContext);
 
   // Match weather to background image and 
@@ -22,7 +22,12 @@ const BackgroundWrapper = ({ children }) => {
     }
   };
 
-  const backgroundImage = weather ? getBackgroundImage(weather.weather[0].main) : 'assets/sunny.png';
+  const backgroundImage = backgroundOverride 
+  ? backgroundOverride 
+  : weather 
+    ? getBackgroundImage(weather.weather[0].main) 
+    : '/backgrounds/sunny.png';
+
 
   return (
     <div
@@ -33,6 +38,8 @@ const BackgroundWrapper = ({ children }) => {
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         backgroundAttachment: 'fixed',
+        minHeight: '100vh',
+        width:'100%'
       }}
     >
       {children}

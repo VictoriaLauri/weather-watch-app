@@ -1,11 +1,11 @@
 
 -- Drops existing tables if they exist to reset the database schema.
-DROP TABLE IF EXISTS genre_weather_mapping;
-DROP TABLE IF EXISTS watchlists;
-DROP TABLE IF EXISTS movies;
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS recommendations;
-DROP TABLE IF EXISTS weather_logs;
+-- DROP TABLE IF EXISTS genre_weather_mapping;
+-- DROP TABLE IF EXISTS watchlists;
+-- DROP TABLE IF EXISTS movies;
+-- DROP TABLE IF EXISTS users;
+-- DROP TABLE IF EXISTS recommendations;
+-- DROP TABLE IF EXISTS weather_logs;
 
 -- Creates the database 'weather_watch_app' if it doesn't exist, and sets it as the active database.
 CREATE DATABASE IF NOT EXISTS weather_watch_app;
@@ -17,8 +17,7 @@ CREATE TABLE users (
   username VARCHAR(50) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL,
   age INT NOT NULL,
-  latitude DECIMAL(9,6),
-  longitude DECIMAL(9,6),
+  email VARCHAR(255) NOT NULL UNIQUE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -46,7 +45,7 @@ CREATE TABLE genre_weather_mapping (
   weather_condition VARCHAR(50) NOT NULL,
   genre VARCHAR(100) NOT NULL
 );
---inserting into tables
+-- inserting into tables
 INSERT INTO genre_weather_mapping (weather_condition, genre) VALUES
 ('Rainy', 'Drama'),
 ('Rainy', 'Mystery'),
@@ -70,7 +69,7 @@ CREATE TABLE recommendations (
 CREATE TABLE weather_logs (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT,
-  condition _weather_log VARCHAR(50),
+  weather_condition VARCHAR(50),
   temperature DECIMAL(5,2),
   humidity INT,
   logged_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
