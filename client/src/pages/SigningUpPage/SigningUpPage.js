@@ -35,7 +35,7 @@ const SigningUpPage = () => {
         email: String(formData.email), // ensure email is treated as a string
       })
       if (response.status === 201) {
-        navigate("/ProfilePage")
+        navigate("/profile")
       }
     } catch (error) {
       if (error.response && error.response.data.message) {
