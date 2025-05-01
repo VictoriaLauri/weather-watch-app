@@ -22,10 +22,18 @@ export const UserProvider = ({ children }) => {
 
   const navigate = useNavigate()
 
-  //token localStorage sync
+  //token check
+  useEffect(() => {
+    const tokenFromStorage = localStorage.getItem('token');
+    if (tokenFromStorage) {
+      setToken(tokenFromStorage); // ensure the user is logged in if token exists
+    }
+  }, []);  // effect only runs once when the component is mounted
+
+  // Token LocalStorage Sync
   useEffect(() => {
     if (token) {
-      localStorage.setItem("token", token);
+      localStorage.setItem('token', token); // Sync the token to localStorage whenever it changes
     }
   }, [token]);
 
@@ -105,10 +113,10 @@ export const UserProvider = ({ children }) => {
     }
   }, [movie])
 
-  // const login = (newToken) => {
-  //   localStorage.setItem('token', newToken)
-  //   setToken(newToken)
-  // }
+  const login = (newToken) => {
+    localStorage.setItem('token', newToken)
+    setToken(newToken)
+  }
 
   const logout = () => {
     // remove everything user-specific
@@ -136,6 +144,7 @@ export const UserProvider = ({ children }) => {
         selectedDecades,
         setSelectedDecades,
         token,
+        login,
         logout,
       }}
     >

@@ -3,23 +3,12 @@ import { UserContext } from '../context/UserContext';
 import axios from 'axios';
 
 const ProfilePage = () => {
-  const { userAge, setUserAge, token } = useContext(UserContext);
+  const { token } = useContext(UserContext);
   const [formData, setFormData] = useState({
-    age: '',
-    latitude: '',
-    longitude: '',
+    username: '',
+    email: '',
+    password: '',
   });
-
-  
-  useEffect(() => {
-    if (token) {
-      setFormData({
-        age: userAge || '',
-        latitude: '',
-        longitude: '',
-      });
-    }
-  }, [token, userAge]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,31 +18,22 @@ const ProfilePage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { age, latitude, longitude } = formData;
+    const { username, email, password } = formData;
 
     // validation
-    if (!age || age <= 0) {
-      alert("Please enter a valid age.");
+    if (!username || !email || !password) {
+      alert('Please fill out all editable fields.');
       return;
-    }
-
-    if (latitude === "" || isNaN(latitude) || latitude < -90 || latitude > 90) {
-      alert("Please enter a valid latitude between -90 and 90.");
-      return;
-    }
-
-    if (longitude === "" || isNaN(longitude) || longitude < -180 || longitude > 180) {
-      alert("Please enter a valid longitude between -180 and 180.");
-      return; 
     }
 
     try {
-      const response = await axios.patch(
+      await axios.patch(
         'http://localhost:8000/api/auth/update',
         {
-          age: Number(formData.age),
-          latitude: Number(formData.latitude),
-          longitude: Number(formData.longitude),
+          username,
+          email,
+          password,
+
         },
         {
           headers: {
@@ -61,7 +41,7 @@ const ProfilePage = () => {
           },
         }
       );
-      setUserAge(formData.age); 
+     
       alert('Profile updated successfully!');
     } catch (error) {
       console.error('Update failed:', error.response?.data || error.message);
@@ -74,40 +54,38 @@ const ProfilePage = () => {
       <h1>Profile</h1>
       <form onSubmit={handleSubmit} className="form">
         <div className="form-group">
-          <label htmlFor="age">Age</label>
+          <label htmlFor="username">Username</label>
           <input
-            type="number"
-            id="age"
-            name="age"
-            value={formData.age}
+            type="text"
+            id="username"
+            name="username"
+            value={formData.username}
             onChange={handleChange}
-            placeholder="Enter your age"
+            placeholder="Enter your username"
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="latitude">Latitude</label>
+          <label htmlFor="email">Email</label>
           <input
-            type="number"
-            step="any"
-            id="latitude"
-            name="latitude"
-            value={formData.latitude}
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
             onChange={handleChange}
-            placeholder="Enter your latitude"
+            placeholder="Enter your email"
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="longitude">Longitude</label>
+          <label htmlFor="password">Password</label>
           <input
-            type="number"
-            step="any"
-            id="longitude"
-            name="longitude"
-            value={formData.longitude}
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
             onChange={handleChange}
-            placeholder="Enter your longitude"
+            placeholder="Password"
             required
           />
         </div>
