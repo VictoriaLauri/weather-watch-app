@@ -39,7 +39,7 @@ const LandingPage = () => {
 
 
         <br/>
-        <Link to="/movie" className="btn-guest"> What should I watch? </Link>
+        <Link to="/watch" className="btn-guest"> What should I watch? </Link>
       </section>
     </div>
   )
