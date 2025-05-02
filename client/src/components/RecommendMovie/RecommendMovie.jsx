@@ -21,11 +21,7 @@ export const RecommendMovie = () => {
     if (coords && weather && !movie) {
       fetchMovieRecommendation()
     }
-  }, [coords, weather, userAge, movie, fetchMovieRecommendation]) // Trigger the effect when coordinates, weather, or user age change
-
-  useEffect(() => {
-    console.log('Selected Decades:', selectedDecades)
-  }, [selectedDecades]) // Sync movie with local storage
+  }, [coords, weather, userAge, movie, fetchMovieRecommendation])
 
   const handleShuffle = () => {
     fetchMovieRecommendation()
@@ -35,7 +31,7 @@ export const RecommendMovie = () => {
   if (movieError) return <p>{movieError}</p>
 
   const handleMovieClick = () => {
-    navigate('/movie') // Navigate to the MovieDetailsPage
+    navigate('/movie')
   }
 
   const decadeOptions = [
@@ -55,7 +51,7 @@ export const RecommendMovie = () => {
   }
 
   const handleFilter = () => {
-    fetchMovieRecommendation() // Trigger the fetch based on selected decades
+    fetchMovieRecommendation()
   }
 
   const clearDecades = () => {
@@ -63,14 +59,15 @@ export const RecommendMovie = () => {
   }
 
   return (
-    <>
-      <div>
+    <div className="recommend-movie-container">
+      {/* Movie Display */}
+      <div className="movie-display-column">
         {movie ? (
           <>
             <h4>Recommended Movie: {movie.title}</h4>
             {movie.poster_path && (
               <img
-                className='movie-container'
+                className="movie-container"
                 src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
                 alt={movie.title}
                 onClick={handleMovieClick}
@@ -80,11 +77,13 @@ export const RecommendMovie = () => {
         ) : (
           <p>No movie recommendation available.</p>
         )}
+        <button className="refresh-button" onClick={handleShuffle}>
+          Give me another option!
+        </button>
       </div>
-      <button className='refresh-button' onClick={handleShuffle}>
-        Give me another option!
-      </button>
-      <div className='decade-filters'>
+
+      {/* Filter Buttons */}
+      <div className="actions-column">
         {decadeOptions.map((decade) => (
           <button
             key={decade}
@@ -94,17 +93,18 @@ export const RecommendMovie = () => {
             {decade}
           </button>
         ))}
+
         {selectedDecades.length > 0 && (
           <>
-            <button onClick={handleFilter} className='filter-button'>
+            <button onClick={handleFilter} className="filter-button">
               Filter by Era
             </button>
-            <button onClick={clearDecades} className='clear-button'>
+            <button onClick={clearDecades} className="clear-button">
               Clear Filters
             </button>
           </>
         )}
       </div>
-    </>
+    </div>
   )
 }

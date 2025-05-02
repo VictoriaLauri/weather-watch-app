@@ -17,6 +17,8 @@ const WeatherDisplay = () => {
   const location = weather.name
   const country = weather.sys.country
 
+
+
   //to send weather and receive the mood, get the little icon and
   // format the weather in a nicer way
   const condition = weather.weather[0].main.toLowerCase()
@@ -24,10 +26,15 @@ const WeatherDisplay = () => {
   const mood = getMoodFromWeather(condition)
   const icon = getIconFromWeather(condition)
 
+  const isSunny = condition.includes('clear');
+  const isDarkBackground = !isSunny; // rainy, cloudy, snowy, etc.
+
   return (
     <>
       <div className='app-container'>
-        <div className='weather-and-movie-container'>
+      <div className={`weather-and-movie-container ${isDarkBackground ? 'dark-text' : 'light-text'}`}>
+
+          {/* Weather information */}
           <div className='weather-info-card'>
             <div className='weather-header-content'>
               <img className='weather-icon' src={icon} alt='Weather Icon' />
@@ -66,7 +73,10 @@ const WeatherDisplay = () => {
           </div>
 
           <div className='movie-info-card'>
+
+            {/* Second and Third Columns: Movie and decade buttons */}
             <RecommendMovie />
+
           </div>
         </div>
       </div>

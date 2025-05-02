@@ -1,21 +1,22 @@
 .weather-and-movie-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* 3 columns */
     justify-content: center;
     align-items: flex-start;
-    gap: 40px;
-    padding: 40px;
+    gap: 20px;
+    padding: 20px;
     flex-wrap: wrap; /* mobile responsiveness */
     flex-direction: column;
     width: 80vw; /* 80% of the viewport width */
     height: 80vh; /* 70% of the viewport height */
     margin-top: 20px;
     margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15.6px);
+    -webkit-backdrop-filter: blur(15.6px);
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-
   }  
-
 
 
 .weather-info-card {
@@ -74,7 +75,6 @@
     margin-top: 10px;
     padding: 5px 5px;
     background-color: #ffffff;
-    color: #000000;
     font-size: 1rem;
     border: none; 
     border-radius: 8px;
@@ -84,4 +84,11 @@
 .location-button:hover {
     background-color: #ebf6ff;    
   }
-  
+
+.light-text {
+  color: white;
+}
+
+.dark-text {
+  color: black;
+}
