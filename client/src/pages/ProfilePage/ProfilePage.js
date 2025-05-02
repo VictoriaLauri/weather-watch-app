@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { UserContext } from '../context/UserContext';
+import { UserContext } from '../../components/context/UserContext';
 import axios from 'axios';
 
 const ProfilePage = () => {
