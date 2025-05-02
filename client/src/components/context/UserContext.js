@@ -24,18 +24,18 @@ export const UserProvider = ({ children }) => {
 
   //token check
   useEffect(() => {
-    const tokenFromStorage = localStorage.getItem('token');
+    const tokenFromStorage = localStorage.getItem('token')
     if (tokenFromStorage) {
-      setToken(tokenFromStorage); // ensure the user is logged in if token exists
+      setToken(tokenFromStorage) // ensure the user is logged in if token exists
     }
-  }, []);  // effect only runs once when the component is mounted
+  }, []) // effect only runs once when the component is mounted
 
   // Token LocalStorage Sync
   useEffect(() => {
     if (token) {
-      localStorage.setItem('token', token); // Sync the token to localStorage whenever it changes
+      localStorage.setItem('token', token) // Sync the token to localStorage whenever it changes
     }
-  }, [token]);
+  }, [token])
 
   // Get user's geolocation
   useEffect(() => {
@@ -144,6 +144,7 @@ export const UserProvider = ({ children }) => {
         selectedDecades,
         setSelectedDecades,
         token,
+        setToken,
         login,
         logout,
       }}
