@@ -4,6 +4,8 @@ import BackgroundWrapper from "../components/BackgroundWrapper/BackgroundWrapper
 import { UserContext } from "../components/context/UserContext"
 import customBackground from "../assets/sigin_in_background.png"
 
+jest.unmock('react-router-dom');
+
 // Test to check background changes when weather changes or when on a page with an override.
 const renderWithContext = (weather, backgroundOverride = null) => {
   return render(
