@@ -1,11 +1,11 @@
-import dotenv from 'dotenv'
 import cors from 'cors'
+import dotenv from 'dotenv'
 import express from 'express'
+import { getMovieRecommendation } from './controllers/movieController.js'
+import { authenticateToken } from './middleware.js'
 import authRoutes from './routes/authRoutes.js'
 import movieRoutes from './routes/movieRoutes.js'
 import weatherRoutes from './routes/weatherRoutes.js'
-import { getMovieRecommendation } from './controllers/movieController.js';
-import { authenticateToken } from './middleware.js'
 dotenv.config({ path: './configweatherwatch.env' }) // Load environment variables from configweatherwatch.env file
 
 const app = express()
@@ -16,8 +16,9 @@ const PORT = process.env.PORT || 8000
 app.use(
   cors({
     origin: 'http://localhost:3000',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
   })
 )
 app.use(express.json())
@@ -30,11 +31,11 @@ app.get('/', (req, res) => {
 })
 
 //api routes
-app.use('/api/auth', authRoutes);
+app.use('/api/auth', authRoutes)
 app.use('/weather', weatherRoutes)
 app.use('/api', movieRoutes) // all movie routes start with /api
 
-app.get('/api/recommendation', authenticateToken, getMovieRecommendation);
+app.get('/api/recommendation', authenticateToken, getMovieRecommendation)
 
 //starting server
 app.listen(PORT, () => {
