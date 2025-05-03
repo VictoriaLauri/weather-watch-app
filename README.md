@@ -5,7 +5,6 @@ Weather Watch is a web application that recommends movies based on current weath
 ## Features
 * User Authentication: Register and log in with username and password.
 * Weather-Based Movie Recommendations: Get movie suggestions based on the current weather and your age.
-* Watchlists: Add movies to your personal watchlist for easy access later.
 * Profile Management: View and edit your personal profile details.
 
 ## 💻 Technologies Used 
