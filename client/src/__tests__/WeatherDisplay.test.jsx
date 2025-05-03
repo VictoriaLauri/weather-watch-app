@@ -59,7 +59,7 @@ describe('WeatherDisplay Component', () => {
       locationError: null,
     });
   
-    // Target the heading specifically containing "New York"
+   
     expect(screen.getByRole('heading', { name: /New York/i })).toBeInTheDocument();
     expect(screen.getByText(/US/i)).toBeInTheDocument();
     expect(screen.getByText(/clear/i)).toBeInTheDocument();
