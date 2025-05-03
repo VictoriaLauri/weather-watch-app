@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.9.0",
     "jest-environment-jsdom": "^29.7.0",
+    "jwt-decode": "^4.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.5.2",
@@ -47,9 +48,9 @@
     "jest": "^27.5.1"
   },
   "jest": {
-  "moduleNameMapper": {
-    "^react-router-dom$": "<rootDir>/src/__mocks__/react-router-dom.js",
-    "testEnvironment": "jsdom"
+    "moduleNameMapper": {
+      "^react-router-dom$": "<rootDir>/src/__mocks__/react-router-dom.js",
+      "testEnvironment": "jsdom"
+    }
   }
-}
 }
