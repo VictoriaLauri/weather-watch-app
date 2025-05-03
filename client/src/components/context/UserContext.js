@@ -125,7 +125,7 @@ export const UserProvider = ({ children }) => {
     setToken(null)
     setMovie(null)
     // redirect to sign-in
-    navigate('/', { replace: true })
+    navigate('/signin', { replace: true })
     setTimeout(() => {
       alert("You have logged out")
     }, 100)
