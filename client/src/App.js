@@ -37,10 +37,7 @@ function App() {
         <Route path='/signup' element={<SigningUpPage />} />
         <Route path='/watch' element={<HomepageMovieSuggestion />} />
         <Route path='/movie' element={<MovieInformation />} />
-        <Route
-          path='/profile'
-          element={<ProtectedRoute element={<ProfilePage />} />}
-        />
+        <Route path='/profile' element={<ProtectedRoute element={<ProfilePage />} />} />
       </Routes>
     </BackgroundWrapper>
   )
