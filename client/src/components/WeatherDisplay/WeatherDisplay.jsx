@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { UserContext } from '../context/UserContext'
-import { RecommendMovie } from '../RecommendMovie/RecommendMovie.jsx'
+import { RecommendMovie } from '../RecommendMovie/RecommendMovie'
 import FormatCondition from './FormatCondition'
 import getIconFromWeather from './GetIconFromWeather'
 import getMoodFromWeather from './GetMoodFromWeather'
