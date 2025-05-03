@@ -36,14 +36,18 @@ const SigningUpPage = () => {
         username: formData.username,
         password: formData.password,
         age: Number(formData.age), // age needs to be a number
-        email: String(formData.email),
+        email: formData.email,
       });
 
       const token = response.data.token;
-      localStorage.setItem("token", token); // save token to localStorage
-      setToken(token); 
+      if(token){
+        localStorage.setItem('token', token)
+        setToken(token)
+      navigate("/watch");
+    }else{
+      setError("Failed to get a token. Please try again")
+    }
 
-      navigate("/signin");
     } catch (error) {
       if (error.response && error.response.data.message) {
         setError(error.response.data.message)
@@ -84,7 +88,7 @@ const SigningUpPage = () => {
             />
 
             <input
-              type="text"
+              type="email"
               name="email"
               placeholder="Email"
               value={formData.email}
