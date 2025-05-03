@@ -45,5 +45,11 @@
     "@babel/plugin-transform-runtime": "^7.27.1",
     "babel-jest": "^29.7.0",
     "jest": "^27.5.1"
+  },
+  "jest": {
+  "moduleNameMapper": {
+    "^react-router-dom$": "<rootDir>/src/__mocks__/react-router-dom.js",
+    "testEnvironment": "jsdom"
   }
+}
 }
