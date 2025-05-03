@@ -1,10 +1,10 @@
 module.exports = {
     presets: [
-      '@babel/preset-env', // Transform modern JavaScript to older versions
-      '@babel/preset-react', // Transform JSX
+      '@babel/preset-env', 
+      '@babel/preset-react', 
     ],
     plugins: [
-      '@babel/plugin-transform-runtime', // This plugin is used for handling async/await and other features
+      '@babel/plugin-transform-runtime', 
     ],
   };
   
