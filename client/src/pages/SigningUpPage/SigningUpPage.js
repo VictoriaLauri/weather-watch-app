@@ -1,42 +1,53 @@
-import React, { useState } from "react"
-import { createMemorySessionStorage, useNavigate } from "react-router-dom"
+import React, { useState, useContext } from "react"
+import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import "./SigningUpPage.css"
 import signUpBackground from "../../assets/sign_up_background.png"
 import BackgroundWrapper from "../../components/BackgroundWrapper/BackgroundWrapper"
+import { UserContext } from "../../components/context/UserContext";
 
 const SigningUpPage = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const{setToken} = useContext(UserContext);
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
     age: "",
     email: "",
-  })
+  });
 
   const [showPassword, setShowPassword] = useState(false)
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
       const response = await axios.post("/api/auth/register", {
-        ...formData,
-        age: Number(formData.age), // age needs to be a number!
-        email: String(formData.email), // ensure email is treated as a string
-      })
-      if (response.status === 201) {
-        navigate("/profile")
-      }
+        username: formData.username,
+        password: formData.password,
+        age: Number(formData.age), // age needs to be a number
+        email: formData.email,
+      });
+
+      const token = response.data.token;
+      if(token){
+        localStorage.setItem('token', token)
+        setToken(token)
+      navigate("/watch");
+    }else{
+      setError("Failed to get a token. Please try again")
+    }
+
     } catch (error) {
       if (error.response && error.response.data.message) {
         setError(error.response.data.message)
@@ -45,10 +56,10 @@ const SigningUpPage = () => {
         console.error(
           "Error signing up:",
           error.response?.data || error.message
-        )
+        );
       }
     }
-  }
+  };
 
   return (
     <BackgroundWrapper backgroundOverride={signUpBackground}>
@@ -58,6 +69,7 @@ const SigningUpPage = () => {
           <p>Sign up to get started</p>
           <form onSubmit={handleSubmit}>
             {error && <p style={{ color: "red" }}>{error}</p>}
+
             <input
               type="text"
               name="username"
@@ -76,7 +88,7 @@ const SigningUpPage = () => {
             />
 
             <input
-              type="text"
+              type="email"
               name="email"
               placeholder="Email"
               value={formData.email}
@@ -117,7 +129,7 @@ const SigningUpPage = () => {
         </div>
       </div>
     </BackgroundWrapper>
-  )
-}
+  );
+};
 
 export default SigningUpPage
