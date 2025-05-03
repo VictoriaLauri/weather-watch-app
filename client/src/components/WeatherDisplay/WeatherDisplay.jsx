@@ -17,8 +17,6 @@ const WeatherDisplay = () => {
   const location = weather.name
   const country = weather.sys.country
 
-
-
   //to send weather and receive the mood, get the little icon and
   // format the weather in a nicer way
   const condition = weather.weather[0].main.toLowerCase()
