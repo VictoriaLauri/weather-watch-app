@@ -4,6 +4,7 @@ import axios from 'axios';
 import {jwtDecode} from 'jwt-decode'
 import { isTokenValid } from '../../utils/tokenUtils';
 import { Link } from 'react-router-dom';
+import "./ProfilePage.css"
 
 const ProfilePage = () => {
   const { token } = useContext(UserContext);
