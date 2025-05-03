@@ -3,6 +3,7 @@ import { UserContext } from '../../components/context/UserContext';
 import axios from 'axios';
 import {jwtDecode} from 'jwt-decode'
 import { isTokenValid } from '../../utils/tokenUtils';
+import { Link } from 'react-router-dom';
 
 const ProfilePage = () => {
   const { token } = useContext(UserContext);
@@ -182,6 +183,9 @@ useEffect(() => {
         <button type="submit" className="edit-profile-btn">
           Update Profile
         </button>
+         <Link to='/watch'>
+          <button className='landing-button'>Suggest a movie!</button>
+        </Link> 
       </form>
 
       {/* Display changes made */}
