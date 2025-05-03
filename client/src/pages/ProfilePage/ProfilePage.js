@@ -4,6 +4,8 @@ import axios from 'axios';
 import {jwtDecode} from 'jwt-decode'
 import { isTokenValid } from '../../utils/tokenUtils';
 import { Link } from 'react-router-dom';
+import profilebkgd from "../../assets/profilebkgd.png"
+import BackgroundWrapper from '../../components/BackgroundWrapper/BackgroundWrapper';
 import "./ProfilePage.css"
 
 const ProfilePage = () => {
@@ -126,8 +128,9 @@ useEffect(() => {
   };
 
   return (
+    <BackgroundWrapper backgroundOverride={profilebkgd}>
     <div className="glassbox">
-      <div className="location-box">
+      <div className="locationbox">
   {location && country ? (
     <p>You are currently in <strong>{location}, {country}</strong>.</p>
   ) : locationError ? (
@@ -208,6 +211,8 @@ useEffect(() => {
         {changedFields.password && <p>Password updated.</p>}
       </div>
     </div>
+  ); </BackgroundWrapper>
+
   );
 };
 
