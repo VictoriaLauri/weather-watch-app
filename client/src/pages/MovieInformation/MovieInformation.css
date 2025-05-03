@@ -1,0 +1,51 @@
+.movie-details-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw; /* 80% of the viewport width */
+    height: 80vw; /* 80% of the viewport height */
+  }
+  
+  .movie-container {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15.6px);
+    -webkit-backdrop-filter: blur(15.6px);
+    backdrop-filter: blur(15px);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .movie-container.dark-text {
+    color: white;
+  }
+  
+  .movie-container.light-text {
+    color: black;
+  }
+
+  .back-button {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .movie-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  
+  .movie-poster {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba
+  }

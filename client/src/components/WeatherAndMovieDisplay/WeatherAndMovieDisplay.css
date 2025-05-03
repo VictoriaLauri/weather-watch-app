@@ -1,0 +1,197 @@
+.weather-and-movie-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 columns */
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    flex-wrap: wrap; /* mobile responsiveness */
+    flex-direction: column;
+    width: 80vw; /* 80% of the viewport width */
+    height: 80vh; /* 70% of the viewport height */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15.6px);
+    -webkit-backdrop-filter: blur(15.6px);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    
+  }  
+
+  .weather-and-movie-container.dark-text {
+    color: white;
+  }
+  
+  .weather-and-movie-container.light-text {
+    color: black;
+  }
+  
+.weather-info-card {
+    max-width: 320px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+.weather-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+
+  .weather-header-content {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* space between icon and text */
+  }
+
+  .weather-info-card h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+  }
+
+  .text-group-1 {
+    margin-bottom: 7%; /* space between each group */
+    display: flex;
+    flex-direction: column;
+    gap: 0px; /* space between each text in the group */
+  }
+
+  .text-group {
+    margin-bottom: 7%; /* space between each group */
+    margin-top: 7%;
+    display: flex;
+    flex-direction: column;
+    gap: 0px; /* space between each text in the group */
+  }
+
+  .text-group p, .text-group h2{
+    margin: 0;
+  }
+
+  hr {
+    width: 100%;
+    border: none;
+    border-top: 1px solid rgb(255, 255, 255);
+    margin: 10px 0;
+  }
+
+  .location-button{
+    width: 55%;
+    margin-top: 10px;
+    padding: 5px 5px;
+    background-color: #ffffff;
+    font-size: 1rem;
+    border: none; 
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.location-button:hover {
+    background-color: #ebf6ff;    
+  }
+
+
+.recommend-movie-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Two sub-columns for Movie and Buttons */
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .movie-display-column {
+    text-align: center;
+  }
+
+.movie-container{
+    width: 100%;
+    max-width: 300px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.refresh-button {
+  margin: 15px auto;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.refresh-button:hover {
+    background-color: #0056b3;
+  }
+  
+.actions-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+.actions-column button {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  transition: background-color 0.3s ease;
+}
+
+.actions-column button:hover {
+    background-color: #e0e0e0;
+  }
+
+.actions-column .selected {
+    color: white;
+    background-color: #236ea5;
+}
+
+  .decade-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .decade-filters button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #e0e0e0;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .decade-filters button:hover {
+    background-color: #d1d1d1;
+  }
+  
+  .decade-filters button.selected {
+    background-color: #ffd700;
+    font-weight: bold;
+  }
+  
+  .filter-button,
+  .clear-button {
+    padding: 8px 15px;
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+ 

@@ -1,10 +1,10 @@
 import React from 'react'
-import WeatherDisplay from '../../components/WeatherDisplay/WeatherDisplay'
+import WeatherAndMovieDisplay from '../../components/WeatherAndMovieDisplay/WeatherAndMovieDisplay';
 
 export default function HomepageMovieSuggestion() {
   return (
     <div className='homepage-movie-suggestion-container'>
-      <WeatherDisplay />
+      <WeatherAndMovieDisplay />
     </div>
   )
 }

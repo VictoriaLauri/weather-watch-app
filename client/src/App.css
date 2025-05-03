@@ -1,6 +1,6 @@
 .App {
   font-family: 'Inter', sans-serif;
-  
+
   align-items: center; /* aligns horizontally in a column */
   min-height: 100vh; /* Full viewport height */
 
@@ -11,15 +11,6 @@
   background-size: cover;
   display: flex;
   flex-direction: column;
-
 }
 
-
-
-h2 {
-  text-align: left;
-  font-size: 3em;
-  font-family: 'Inter', sans-serif;
-  color: black;
-}
 
