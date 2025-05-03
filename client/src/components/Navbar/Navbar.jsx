@@ -8,7 +8,7 @@ import './Navbar.css';
 function Navbar() {
   const { logout, token } = useContext(UserContext);
   const location = useLocation()
-  const hideNavButtons = location.pathname === '/signin' || location.pathname === '/signup' || location.pathname === '/';
+  const hideNavButtons = location.pathname === '/signin' || location.pathname === '/signup' ;
 
 
   return (

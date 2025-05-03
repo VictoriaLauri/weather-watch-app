@@ -5,6 +5,7 @@ import { db } from '../db/db.js';
 
 const router = express.Router();
 
+//register
 router.post('/register', async (req, res) => {
   const { username, password, age, email } = req.body;
 
@@ -34,7 +35,7 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Login
+//login
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
@@ -64,4 +65,75 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// Update Profile
+router.put('/update', async (req, res) => {
+  const { id, username, email, password, currentPassword } = req.body;
+
+  try {
+    // Retrieve the current user
+    const [users] = await db.query('SELECT * FROM users WHERE id = ?', [id]);
+
+    if (users.length === 0) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const user = users[0];
+
+    // Validate current password
+    const match = await bcrypt.compare(currentPassword, user.password);
+    if (!match) {
+      return res.status(401).json({ message: 'Incorrect current password' });
+    }
+
+    // Prepare update query
+    let query = 'UPDATE users SET';
+    const values = [];
+
+    if (username) {
+      query += ' username = ?,';
+      values.push(username);
+    }
+    if (email) {
+      query += ' email = ?,';
+      values.push(email);
+    }
+    if (password) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      query += ' password = ?,';
+      values.push(hashedPassword);
+    }
+
+    // Remove trailing comma and add WHERE clause
+    query = query.slice(0, -1); // Remove last comma
+    query += ' WHERE id = ?';
+    values.push(id);
+
+    await db.query(query, values);
+    res.json({ message: 'Profile updated successfully' });
+  } catch (err) {
+    console.error('Profile update error:', err.message);
+    res.status(500).json({ message: 'Failed to update profile' });
+  }
+});
+
+// Get current user info
+router.get('/userinfo', async (req, res) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) return res.status(401).json({ message: 'No token provided' });
+
+  const token = authHeader.split(' ')[1];
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const [users] = await db.query('SELECT id, username, email FROM users WHERE id = ?', [decoded.id]);
+    if (users.length === 0) return res.status(404).json({ message: 'User not found' });
+
+    res.json(users[0]);
+  } catch (err) {
+    console.error('Token verification error:', err.message);
+    res.status(401).json({ message: 'Invalid token' });
+  }
+});
+
+
 export default router;
+

@@ -22,6 +22,21 @@ export const UserProvider = ({ children }) => {
 
   const navigate = useNavigate()
 
+  //token check
+  useEffect(() => {
+    const tokenFromStorage = localStorage.getItem('token')
+    if (tokenFromStorage) {
+      setToken(tokenFromStorage) // ensure the user is logged in if token exists
+    }
+  }, []) // effect only runs once when the component is mounted
+
+  // Token LocalStorage Sync
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem('token', token) // Sync the token to localStorage whenever it changes
+    }
+  }, [token])
+
   // Get user's geolocation
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -129,6 +144,7 @@ export const UserProvider = ({ children }) => {
         selectedDecades,
         setSelectedDecades,
         token,
+        setToken,
         login,
         logout,
       }}

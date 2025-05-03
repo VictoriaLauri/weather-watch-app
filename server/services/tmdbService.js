@@ -41,13 +41,9 @@ export const fetchMovieByWeatherAndAge = async (
       const url = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=${randomGenre}&language=en-US&page=${randomPage}`
       const res = await axios.get(url)
       const movies = res.data.results
-      const usableMovies = movies.filter(movie => movie.release_date) // Filter out movies without a release date
+      const usableMovies = movies.filter((movie) => movie.release_date) // Filter out movies without a release date
       allMovies = allMovies.concat(usableMovies) // Concatenate all movies from the pages
     }
-
-    allMovies.forEach((movie) => {
-      console.log(movie.release_date) // Log each movie's release_date
-    })
 
     const validMovies = allMovies.filter((movie) => {
       const releaseYear = new Date(movie.release_date).getFullYear()
