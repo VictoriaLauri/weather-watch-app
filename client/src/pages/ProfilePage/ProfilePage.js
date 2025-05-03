@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import "./ProfilePage.css"
 
 const ProfilePage = () => {
-  const { token } = useContext(UserContext);
+  const { token, location, country, locationError } = useContext(UserContext);
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -126,7 +126,18 @@ useEffect(() => {
   };
 
   return (
-    <div className="profile-page">
+    <div className="glassbox">
+      <div className="location-box">
+  {location && country ? (
+    <p>You are currently in <strong>{location}, {country}</strong>.</p>
+  ) : locationError ? (
+    <p>{locationError}</p>
+  ) : (
+    <p>Detecting your location...</p>
+  )}
+</div>
+
+      <div className="formContainer">
       <h1>Profile</h1>
       {message && <p>{message}</p>} {/* Show success or error message */}
       
@@ -188,6 +199,7 @@ useEffect(() => {
           <button className='landing-button'>Suggest a movie!</button>
         </Link> 
       </form>
+      </div>
 
       {/* Display changes made */}
       <div className="changes-summary">
