@@ -126,6 +126,9 @@ export const UserProvider = ({ children }) => {
     setMovie(null)
     // redirect to sign-in
     navigate('/', { replace: true })
+    setTimeout(() => {
+      alert("You have logged out")
+    }, 100)
   }
 
   return (
