@@ -35,13 +35,13 @@ Weather Watch is a web application that recommends movies based on current weath
 
 ### 2. Install Dependencies for both client and server 
 
-Install dependencies in the root first:
+Install dependencies in the root first: <br/>
 ``` npm install```
 
-Then install dependencies for the front-end:
+Then install dependencies for the front-end:  <br/>
 ``` cd client && npm install ``` 
 
-Then install dependencies for the back-end:
+Then install dependencies for the back-end:  <br/>
 ``` cd server && npm install```
 
 ### 3. Create a configweatherwatch.env file in the backend ( server/ ) folder and add the following keys: 
@@ -63,7 +63,7 @@ Make sure your MySQL is running and the tables are set up using the schema found
 
 ### 5. Run the App
 
-#### To start both the React Frontend and Express backend concurrently:
+### ***To start both the React Frontend and Express backend concurrently***
 
 #### From the root directory (weather_watch_app)
 
@@ -87,7 +87,7 @@ Make sure your MySQL is running and the tables are set up using the schema found
  * View movie recommendations based on your profile and the weather conditions at your location
  * Try generating other suggestions and filter your next movie recommendation by the release date era
  * Go to Profile to update your username, email, or password
- * Log out to clear all user-related data to allow for the next user to register/login (
+ * Log out to clear all user-related data to allow for the next user to register/login 
 
 ## 🔬 How to Test the App
 
