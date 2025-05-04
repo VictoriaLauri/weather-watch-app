@@ -42,5 +42,15 @@ body, html {
 
   .profile-icon{
     width: 30px;
+    padding-right: 1em;
   }
 
+.logout-button{
+  background-color: #004187;
+    color: white;
+    font-weight: 700;
+    border-radius: 25px;
+    width: 70px;
+    height:30px;
+  
+}
