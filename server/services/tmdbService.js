@@ -45,30 +45,38 @@ export const fetchMovieByWeatherAndAge = async (
       allMovies = allMovies.concat(usableMovies) // Concatenate all movies from the pages
     }
 
-    const validMovies = allMovies.filter((movie) => {
-      const releaseYear = new Date(movie.release_date).getFullYear()
-      return selectedDecades.some((decade) => {
-        const range = mapDecadesToRanges(decade)
-        if (!range) {
-          console.error(`Unknown decade label: ${decade}`)
-          return false
-        }
-        const { start, end } = range
-        return releaseYear >= start && releaseYear <= end
-      })
-    })
+    const validMovies = []
 
+for (const movie of allMovies) {
+  const releaseYear = new Date(movie.release_date).getFullYear()
+
+  // Check decade
+  const fitsDecade = selectedDecades.some((decade) => {
+    const range = mapDecadesToRanges(decade)
+    if (!range) {
+      console.error(`Unknown decade label: ${decade}`)
+      return false
+    }
+    return releaseYear >= range.start && releaseYear <= range.end
+  })
+
+  if (!fitsDecade) continue
+ 
+  // Fetch and check certification
+  const certification = await getCertification(movie.id) 
+  if (isAgeAppropriate(certification, userAge)) {
+    validMovies.push(movie)
+  }
+}
     if (validMovies.length > 0) {
       // Randomly select a valid movie
       const randomMovie =
         validMovies[Math.floor(Math.random() * validMovies.length)]
 
-      // Check if the movie is age appropriate
-      const certification = await getCertification(randomMovie.id)
-
-      if (isAgeAppropriate(certification, userAge)) {
+        
         return randomMovie
-      }
+        
+     
     }
   }
 
