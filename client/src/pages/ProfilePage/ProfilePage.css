@@ -13,7 +13,8 @@
     justify-self: center;
     padding: 8px;
   }
-  formContainer{
+
+  .formContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,12 +23,12 @@
 }
 
 form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    gap: 1em;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 1em !important;
     
   }
   input {
@@ -43,7 +44,7 @@ form {
     font-weight: 700;
     font-size: 40px;
     width: 100%;
-    color: #004187;
+    color: white;
     text-align: left;
     margin-top: 10%;
     margin-bottom: 1em;
@@ -77,5 +78,28 @@ button:focus {
 
 label{
     padding: 1em;
-    color:#004187;   
+    color:#004187;  
+    font-weight: 700; 
+}
+.moviesuggestion{
+    background-color: #004187;
+    color: white;
+    font-weight: 700;
+    border-radius: 25px;
+    width: 150px;
+    height:30px
+
+}
+
+button[type=submit]{
+    color: white !important;
+    background-color: #004187 !important;
+    font-weight: 700;
+    width: 400px;
+    height: 45px;
+    border-radius: 30px !important;
+    font-size: 18px;
+    border: none;
+    box-sizing: border-box;
+    margin-top: 1em;
 }
