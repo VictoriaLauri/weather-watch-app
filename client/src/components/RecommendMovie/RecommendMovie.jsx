@@ -64,10 +64,6 @@ export const RecommendMovie = () => {
     setSelectedDecades([])
   }
 
-  const handleMovieNavigate = () => {
-    navigate('/movie') // Navigate to the MovieDetailsPage
-  }
-
   const condition = weather?.weather?.[0]?.main?.toLowerCase()
   const isClear = condition?.includes('clear')
 
