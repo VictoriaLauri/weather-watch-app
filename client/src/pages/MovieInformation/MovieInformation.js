@@ -1,11 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../components/context/UserContext.js';
+
 import { genreMap } from '../../utils/GenreIDMap'
 import './MovieInformation.css'
 
 
 
 const MovieInformation = () => {
+
+  // access content data
+  const { weather } = useContext(UserContext);
+  const condition = weather.weather[0].main.toLowerCase();
+  console.log(condition);
+
+  // checks condition to change text colour later
+  const isSunny = condition.includes('clear');
+  const isDarkBackground = !isSunny;
+  console.log(isDarkBackground)
+
   const [movie, setMovie] = useState(null)
   const navigate = useNavigate()
 
@@ -35,7 +48,8 @@ const MovieInformation = () => {
   }
 
 return (
-<div className='movie-details-page'>  
+<div className={`movie-details-page ${isDarkBackground ? 'dark-text' : 'light-text'}`}> 
+
 <div className='movie-container'> 
 
 {/* Back button */}

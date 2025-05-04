@@ -3,6 +3,7 @@
     justify-content: center;
     width: 80vw;
     margin: 20px 0;
+    /* color: var(--text-color-dark); */
   }
   
   .movie-container {
@@ -19,12 +20,18 @@
     padding: 20px;
   }
 
-  .movie-container.light-text {
-    color: white;
+
+:root {
+    --text-color-light: black;
+    --text-color-dark: white;
+  }
+
+.movie-details-page.light-text {
+    color: var(--text-color-light);
   }
   
-  .movie-container.dark-text {
-    color: black;
+.movie-details-page.dark-text {
+    color: var(--text-color-dark);
   }
 
   .back-button {
