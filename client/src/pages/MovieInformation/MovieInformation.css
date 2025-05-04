@@ -1,0 +1,68 @@
+.glassbox{
+    background: rgba(255, 255, 255, 0.19);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15.6px);
+    -webkit-backdrop-filter: blur(15.6px);
+    border: 2px solid rgba(255, 255, 255, 0.07);
+    width: 100% !important;
+    height: auto;
+    min-height: 300px;
+    margin: auto;
+    display: flex;
+    flex-direction: row !important;
+    justify-self: center;
+    padding: 8px;
+  }
+
+  .AllInfoMovie{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5em;
+  }
+
+  .AllInfoMovie.darkText h1,
+  .AllInfoMovie.darkText p{
+    color:black;
+  }
+
+  .AllInfoMovie h1{
+    color: white;
+  }
+
+  .movie-details{
+    display: flex;
+    flex-direction: column;
+    padding-left: 1em;
+    margin: auto;
+  }
+
+  hr {
+    width: 60%;
+    border: none;
+    border-top: 1px solid #004187;
+  }
+span{
+    font-weight: 700;
+}
+  .overview{
+    white-space: normal;
+  word-break: break-word;
+  max-width: 60%;
+  text-align: left;
+  }
+  
+  
+  .movie-poster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;    
+    padding-top:1em;
+    padding-right: 1em;
+   
+  }
+   
+  
+ 
