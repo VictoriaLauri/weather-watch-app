@@ -62,12 +62,15 @@ export const RecommendMovie = () => {
     setSelectedDecades([])
   }
 
+  const condition = weather?.weather?.[0]?.main?.toLowerCase()
+  const isClear = condition?.includes('clear')
+
   return (
     <>
       <div className='movieInfoAndChange'>
         {movie ? (
           <>
-            <h4 className='movieTitle'>{movie.title}</h4>
+            <h3 className={`movieTitle ${isClear ? '' : 'darkText'}`}>{movie.title}</h3>
             {movie.poster_path && (
               <img
                 className='movie-container'
@@ -76,11 +79,12 @@ export const RecommendMovie = () => {
                 onClick={handleMovieClick}
               />
             )}
+             
           </>
         ) : (
           <p>No movie recommendation available.</p>
         )}
-      
+      <p className="clickDetails">CLICK POSTER FOR MOVIE INFORMATION</p>
       <button className='refresh-button' onClick={handleShuffle}>
         Give me another option!
       </button>
@@ -90,17 +94,17 @@ export const RecommendMovie = () => {
           <button
             key={decade}
             onClick={() => toggleDecade(decade)}
-            className={`decade-button${selectedDecades.includes(decade) ? 'selected' : ''}`}
+            className={`decade-button ${selectedDecades.includes(decade) ? 'selected' : ''} ${isClear ? '': 'darkText'}`}
           >
             {decade}
           </button>
         ))}
         {selectedDecades.length > 0 && (
           <>
-            <button onClick={handleFilter} className='filter-button'>
+            <button onClick={handleFilter} className={`filter-button ${isClear ? '': 'darkText'}`}>
               Filter by Era
             </button>
-            <button onClick={clearDecades} className='clear-button'>
+            <button onClick={clearDecades} className={`clear-button ${isClear ? '': 'darkText'}`}>
               Clear Filters
             </button>
           </>

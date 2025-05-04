@@ -24,9 +24,13 @@ const WeatherDisplay = () => {
   const mood = getMoodFromWeather(condition)
   const icon = getIconFromWeather(condition)
 
+  const clear =
+  condition.includes('clear')
+
+  
   return (
-    <>
-      <div className='glassboxmovie'>
+    <div className='pagewrap'>
+      <div className={`glassboxmovie ${clear ? '': 'notClearBackgroundText'}`}>
         <div className='weatherinfo'>
             <div className='weather-header-content'>
               <img className='weather-icon' src={icon} alt='Weather Icon' />
@@ -62,7 +66,7 @@ const WeatherDisplay = () => {
           </div>
        
       </div>
-    </>
+    </div>
   )
 }
 
