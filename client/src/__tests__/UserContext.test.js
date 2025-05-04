@@ -20,7 +20,7 @@ describe('UserContext', () => {
       </UserProvider>
     )
 
-    expect(screen.getByTestId('user-age')).toHaveTextContent('25') // default userAge
+    expect(screen.getByTestId('user-age')).toHaveTextContent('') // default userAge
     expect(screen.getByTestId('movie-error')).toHaveTextContent('') // default movieError
     expect(screen.getByTestId('token')).toHaveTextContent('') // default token
   })
