@@ -39,3 +39,36 @@ cursor: pointer;
   color: white !important;
   border-color: white !important;
 }
+
+.imagelink{
+  display: grid;
+  position: relative;
+  width: 300px; /* or your desired width */
+  height: auto;
+}
+
+.imagelink img,
+.imagelink button {
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+}
+
+.imagelink img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.learnmore{
+  position: relative;
+  top: -40px;
+  left:10px;
+  place-self: center; /* or use start/end to control position */
+  background-color: white;
+  color: rgba(0, 65, 135);
+  font-weight: 700;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 10px;
+  cursor: pointer;
+}
