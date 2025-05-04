@@ -15,11 +15,12 @@
     padding: 8px;
   }
 
-  .AllInfoMovie{
+  .AllInfoMovie {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     gap: 1.5em;
+    width: 100%;
   }
 
   .AllInfoMovie.darkText h1,
@@ -31,11 +32,11 @@
     color: white;
   }
 
-  .movie-details{
-    display: flex;
-    flex-direction: column;
+  .movie-details {
+    flex: 1;                  /* takes remaining space */
     padding-left: 1em;
-    margin: auto;
+    margin: auto 0;           /* vertical center */
+    max-width: 60% !important;
   }
 
   hr {
@@ -49,20 +50,38 @@ span{
   .overview{
     white-space: normal;
   word-break: break-word;
-  max-width: 60%;
+  /* max-width: 60%; */
   text-align: left;
   }
-  
-  
-  .movie-poster {
+  .movieposter {
+    flex-shrink: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40vh;    
-    padding-top:1em;
-    padding-right: 1em;
-   
+    padding: 1em;
+    max-width: 40%;
   }
-   
   
- 
+  .movie-poster {
+    height: 40vh;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  
+
+
+  .back-button {
+    background-color: #004187;
+    color: white;
+    font-weight: 700;
+    border-radius: 25px;
+    height: 31px;
+    margin-top: 2em;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .back-button:hover{
+    background-color:  #396fa4;
+    ;
+  }
