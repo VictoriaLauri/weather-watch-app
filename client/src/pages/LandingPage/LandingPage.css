@@ -65,6 +65,7 @@
     box-sizing: border-box;
     margin-top: 2em;
     margin-left: 4em;
+    cursor: pointer;
   }
   
   .landing-buttonSI{
@@ -79,6 +80,7 @@
     box-sizing: border-box;
     margin-top: 2em;
     margin-left: 4em;
+    cursor: pointer;
   }
   .landing-buttonSU{
     color: white;
@@ -92,4 +94,5 @@
     box-sizing: border-box;
     margin-top: 2em;
     margin-left: 4em;
+    cursor: pointer;
   }
