@@ -33,7 +33,7 @@ Weather Watch is a web application that recommends movies based on current weath
 
 ```git clone https://github.com/VictoriaLauri/weather-watch-app.git```<br/>
 
-### 2. Install Dependencies for both client and server 
+### 2. Install Dependencies for application root, client and server 
 
 Install dependencies in the root first: <br/>
 ``` npm install```
@@ -55,7 +55,7 @@ Then install dependencies for the back-end:  <br/>
 * DB_NAME=weather_watch_app
 * PORT=8000
 
-You will find a configweatherwatch.env.test file with sample keys.
+You will find a configweatherwatch.env.test file with sample keys. Just remove .test to make it useable.
 
 ### 4. Set up MySQL database
 

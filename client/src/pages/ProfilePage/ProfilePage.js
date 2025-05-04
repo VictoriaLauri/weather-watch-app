@@ -191,7 +191,7 @@ useEffect(() => {
           />
         </div>
         <div className="form-group">
-          <label className='label' htmlFor="currentPassword">Confirm password for changes</label>
+          <label className='label' htmlFor="currentPassword">Confirm old password for changes</label>
           <input
             type="password"
             id="currentPassword"
