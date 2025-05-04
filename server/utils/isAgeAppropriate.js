@@ -6,7 +6,7 @@ export function isAgeAppropriate(certification, userAge) {
   // Look up the minimum age for this certification.
   // If it’s not in our map, we’ll assume it’s safe.
   const minAge = certificationAges[certification]
-  if (minAge == null) return true
+  if (minAge == null) return userAge>7
   // If the user is under the minimum age, return false.
   return userAge >= minAge
 }
