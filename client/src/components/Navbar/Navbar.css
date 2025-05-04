@@ -9,6 +9,7 @@ body, html {
     width: 100vw; /* full viewport width */
     box-sizing: border-box;
     background: #BBDDFF;
+    border-bottom: 2px solid #004187;
     height: 50px;
     display: flex;
     justify-content: flex-start;
@@ -51,6 +52,5 @@ body, html {
     font-weight: 700;
     border-radius: 25px;
     width: 70px;
-    height:30px;
-  
+    height:31px;
 }
