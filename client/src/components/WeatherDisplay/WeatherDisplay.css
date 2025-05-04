@@ -6,41 +6,39 @@
   -webkit-backdrop-filter: blur(15.6px);
   border: 2px solid rgba(255, 255, 255, 0.07);
   width: 100% !important;
-  height: 50%;
+  height: auto;
+  min-height: 300px;
   margin: auto;
   display: flex;
   flex-direction: row !important;
   justify-self: center;
   padding: 8px;
 }
-
-
-
-
-/* .weather-and-movie-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 40px;
-    padding: 40px;
-    flex-wrap: wrap;
-    flex-direction: column;
-    width: 80vw; 
-    height: 80vh; 
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-
-  }   */
+.pagewrap{
+  display: flex;
+  justify-content: center;  
+  align-items: center;  
+  height: 100vh;           
+  padding: 20px;
+  box-sizing: border-box;  
+}
 
 .weatherinfo{
     max-width: 320px;
-    padding: 30px;
+    padding: 3em;
     display: flex;
     flex-direction: column;
     text-align: left;
+    margin: auto;
+}
+
+.notClearBackgroundText,
+.notClearBackgroundText p,
+.notClearBackgroundText h2,
+.notClearBackgroundText h1,
+.notClearBackgroundText h3,
+.notClearBackgroundText span {
+  color: white !important;
 }
 
 .weather-icon {
@@ -52,11 +50,13 @@
 .weather-header-content {
   display: flex;
   align-items: center;
-  gap: 12px; 
+  gap: 30px; 
+  font-size: large;
 }
 .weatherinfo h2 {
   font-size: 2.5rem;
   font-weight: 800;
+
 }
 
 .text-group-1 {
@@ -76,6 +76,7 @@
 .text-group p, .text-group h2{
   margin: 0;
 }
+
 hr {
   width: 100%;
   border: none;
@@ -86,12 +87,26 @@ hr {
 .movie-info-card{
   display: flex;
   flex-direction: row !important;
+  padding: 3em;
+}
+
+.movie-info-card .movieTitle{
+  white-space: normal;
+  word-break: break-word;
+  max-width: 60%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+  font-size: xX-large !important;
 }
 
 .movie-info-card .decade-filters{
   display: flex;
   flex-direction: column;
   margin:auto;
+  padding:3em;
+  padding-left: 7em;
 }
 .movie-info-card .decade-filters button{
       color: black;
@@ -99,27 +114,25 @@ hr {
       border: solid 1px black !important;
       font-weight: 700;
       width: 200px;
-      height: 45px;
+      height: 50px;
       border-radius: 25px;
       font-size: 18px;
       border: none;
       box-sizing: border-box;
       margin-top: 1em;
-
-}
-.movie-info-card .decade-button:hover {
-  background-color: #004187 !important;
-  color: white !important
 }
 
-.movie-info-card .decade-buttonselected {
+
+.movie-info-card .decade-button.selected.darkText {
   background-color: #004187 !important;
   color: white !important;
 }
-
-.movie-info-card .movieTitle{
- padding-left: 1em;
- padding-right: 1em;
+.movie-info-card .decade-button.selected {
+  background-color: #004187 !important;
+  color: white !important;
+}
+.movie-info-card .decade-button.darkText{
+  color:white !important;
 }
 
 .movie-info-card .movieInfoAndChange{
@@ -131,14 +144,36 @@ hr {
 .movie-info-card .filter-button{
   height: 30px !important;
 }
+.movie-info-card .filter-button.darkText{
+  color: white;
+}
+
+.movie-info-card .filter-button:hover{
+  background-color: #396fa4;
+}
+.movie-info-card .filter-button.darkText:hover{
+  background-color: #396fa4;
+}
 
 .movie-info-card .clear-button{
   height: 30px !important;
 }
 
+.movie-info-card .clear-button.darkText{
+  color: white;
+}
+
+
 .movie-info-card .clear-button:hover{
-  background-color: #BBDDFF;
+  background-color: #396fa4;
 }
 .movie-info-card .filter-button:hover{
-  background-color: #BBDDFF;
+  background-color: #396fa4;
 }
+
+.movie-info-card .clickDetails{
+  display: flex;
+ justify-content: center;
+ padding-top: 1em;
+}
+
