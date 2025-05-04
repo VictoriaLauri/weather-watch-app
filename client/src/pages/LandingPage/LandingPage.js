@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom' // Importing Link for navigation
 import { UserContext } from '../../components/context/UserContext'
 import logoIcon from '../../assets/WW_logo_white.png';
 import skyBackground from '../../assets/sky-background.png';
-import cloudsBackground from '../../assets/clouds-background.png';
+import clouds from '../../assets/clouds-background.png'
+import BackgroundWrapper from "../../components/BackgroundWrapper/BackgroundWrapper"
 import './LandingPage.css'
 
 const LandingPage = () => {
   const {token} = useContext(UserContext)
 
   return (
+    <BackgroundWrapper backgroundOverride={clouds}>
     <div className='landing-container'>
        <section className="top-section" style={{
     background: `url(${skyBackground}) no-repeat center/cover`,}}>
@@ -23,15 +25,16 @@ const LandingPage = () => {
       <p className="description">
           Your perfect movie night starts with the sky above! Whether it's a rainy evening, a sunny afternoon, or a chilly winter night, WeatherWatch curates the best films to match the weather outside.
         </p>
-
+        </section>
       <div className='button-container'>
+        <p className='accessInfo'>Sign up or Sign in to access your suggestion</p>
         {!token ?(
           <>
         <Link to='/signup'>
-          <button className='landing-button'>Sign Up</button>
+          <button className='landing-buttonSU'>Sign Up</button>
         </Link>
         <Link to='/signin'>
-          <button className='landing-button'>Sign In</button>
+          <button className='landing-buttonSI'>Sign In</button>
         </Link>
         </> ):( 
         <Link to='/watch'>
@@ -39,12 +42,11 @@ const LandingPage = () => {
         </Link> 
         )}
       </div>
-      </section>
-      <section className="bottom-section" style={{
-    background: `url(${cloudsBackground}) no-repeat center/cover`,}}>
-      </section>
+     
     </div>
+    </BackgroundWrapper>
   )
+  
 }
 
 export default LandingPage
