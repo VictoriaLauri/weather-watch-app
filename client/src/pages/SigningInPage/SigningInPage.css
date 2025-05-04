@@ -98,4 +98,6 @@ button:focus {
 button[type=submit]:hover{
   background-color: #396fa4 !important;
 }
- 
+.signInLink:hover{
+color: #396fa4;
+}
