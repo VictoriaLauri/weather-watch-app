@@ -40,7 +40,7 @@
   }
 
   hr {
-    width: 60%;
+    width: 100%;
     border: none;
     border-top: 1px solid #004187;
   }
@@ -50,7 +50,7 @@ span{
   .overview{
     white-space: normal;
   word-break: break-word;
-  /* max-width: 60%; */
+
   text-align: left;
   }
   .movieposter {
