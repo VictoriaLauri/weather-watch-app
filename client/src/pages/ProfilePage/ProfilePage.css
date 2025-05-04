@@ -1,3 +1,5 @@
+
+
 .glassbox {
     background: rgba(255, 255, 255, 0.19);
     border-radius: 16px;
@@ -14,13 +16,14 @@
     padding: 8px;
   }
 
-  .formContainer{
-    display: flex;
+  /* .formContainer{
+    display: flex !important;
     flex-direction: column;
     align-items: center;
-    width: 400px;
+    width: 100px;
+    max-width: 400px;
     margin: 0 auto;
-}
+} */
 
 form {
     display: flex !important;
@@ -32,6 +35,7 @@ form {
     
   }
   input {
+  
     font-size: 18px;
     text-indent: 1em;
     border: none;
@@ -96,7 +100,8 @@ button[type=submit]{
     color: white !important;
     background-color: #004187 !important;
     font-weight: 700;
-    width: 400px;
+    width: 100px;
+    max-width: 400px;
     height: 45px;
     border-radius: 30px !important;
     font-size: 18px;
