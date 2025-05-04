@@ -39,6 +39,7 @@ form {
     width: 400px;
     border-radius: 25px;
     height: 64px;
+    margin-top: 10px;
   }
   h1 {
     font-weight: 700;
@@ -57,9 +58,10 @@ form {
 }
 
 .locationbox p {
-    color: #004187;
+    color: white;
     width: 100%;
     padding-left: 1em;
+    font-size: large;
   }
 .line{
    border-bottom: 2px solid #004187;
@@ -72,14 +74,14 @@ button:focus {
 
 :placeholder-shown {
   font-size: large;
-
   padding-left: 16px;
 }
 
-label{
-   
+.label{
     color:#004187;  
-    font-weight: 700; ;
+    font-weight: 700;
+    padding-left: 1em !important;
+    font-size: large;
 }
 .moviesuggestion{
     background-color: #004187;
@@ -102,4 +104,5 @@ button[type=submit]{
     border: none;
     box-sizing: border-box;
     margin-top: 1em;
+    margin-bottom: 1em;
 }
