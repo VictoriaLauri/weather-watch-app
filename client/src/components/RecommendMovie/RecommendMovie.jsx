@@ -41,9 +41,9 @@ export const RecommendMovie = () => {
   const decadeOptions = [
     'Classic Pre-1970s',
     'Retro 70s and 80s',
-    '90s and 2000s Throwback',
+    'Throwback 90s and 2000s',
     'Modern 2010s',
-    '2020s Fresh Hits',
+    'Fresh Hits 2020s',
   ]
 
   const toggleDecade = (decade) => {
@@ -64,10 +64,10 @@ export const RecommendMovie = () => {
 
   return (
     <>
-      <div>
+      <div className='movieInfoAndChange'>
         {movie ? (
           <>
-            <h4>Recommended Movie: {movie.title}</h4>
+            <h4 className='movieTitle'>{movie.title}</h4>
             {movie.poster_path && (
               <img
                 className='movie-container'
@@ -80,16 +80,17 @@ export const RecommendMovie = () => {
         ) : (
           <p>No movie recommendation available.</p>
         )}
-      </div>
+      
       <button className='refresh-button' onClick={handleShuffle}>
         Give me another option!
       </button>
+      </div>
       <div className='decade-filters'>
         {decadeOptions.map((decade) => (
           <button
             key={decade}
             onClick={() => toggleDecade(decade)}
-            className={selectedDecades.includes(decade) ? 'selected' : ''}
+            className={`decade-button${selectedDecades.includes(decade) ? 'selected' : ''}`}
           >
             {decade}
           </button>
