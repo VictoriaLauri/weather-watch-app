@@ -11,7 +11,7 @@
     margin: auto;
     display: flex;
     flex-direction: row !important;
-    justify-self: center;
+    justify-self: center !important;
     padding: 8px;
   }
 
@@ -84,4 +84,12 @@ span{
   .back-button:hover{
     background-color:  #396fa4;
     ;
+  }
+
+  .page-center-wrapper{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* full viewport height */
+  width: 100%;
   }
