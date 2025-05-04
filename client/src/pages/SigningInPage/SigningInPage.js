@@ -45,7 +45,7 @@ const [showPassword, setShowPassword]=useState(false)
     <div className="formContainer">
       <h4>Welcome back</h4>
       <p>Log in with your email</p>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p style={{ color: "red", fontWeight:700}}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
