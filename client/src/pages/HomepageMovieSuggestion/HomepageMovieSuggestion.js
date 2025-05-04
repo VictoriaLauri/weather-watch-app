@@ -1,9 +1,9 @@
 import React from 'react'
-import WeatherAndMovieDisplay from '../../components/WeatherAndMovieDisplay/WeatherAndMovieDisplay';
+import WeatherAndMovieDisplay from '../../components/WeatherAndMovieDisplay/WeatherAndMovieDisplay.js';
 
 export default function HomepageMovieSuggestion() {
   return (
-    <div className='homepage-movie-suggestion-container'>
+    <div>
       <WeatherAndMovieDisplay />
     </div>
   )

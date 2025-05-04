@@ -7,6 +7,8 @@ import getMoodFromWeather from './GetMoodFromWeather';
 import './WeatherAndMovieDisplay.css';
 
 const WeatherAndMovieDisplay = () => {
+  
+  // access content data
   const {
     weather,
     loading,
@@ -23,30 +25,39 @@ const WeatherAndMovieDisplay = () => {
 
   const navigate = useNavigate();
 
-  // Fetch movie recommendations when necessary
+  // fetch movie recommendation
   useEffect(() => {
     if (coords && weather && !movie) {
       fetchMovieRecommendation();
     }
   }, [coords, weather, userAge, movie, fetchMovieRecommendation]);
 
-  if (loading) return <p>Loading weather...</p>;
-  if (locationError) return <p>{locationError}</p>;
-  if (!weather) return <p>No weather data available.</p>;
+  // loading and error states
+  if (loading || locationError || !weather) {
+    return (
+      <p>
+        {loading ? 'Loading weather...' : locationError || 'No weather data available.'}
+      </p>
+    );
+  }
 
-  // Extract weather-related data
+  // extract weather and formatting data
   const location = weather.name;
   const country = weather.sys.country;
   const condition = weather.weather[0].main.toLowerCase();
   const formatCondition = FormatCondition(condition);
   const mood = getMoodFromWeather(condition);
   const icon = getIconFromWeather(condition);
+
+  // checks condition to change text colour later
   const isSunny = condition.includes('clear');
   const isDarkBackground = !isSunny;
 
-  // Handle movie-related actions
+  // handle movie-related actions
   const handleShuffle = () => fetchMovieRecommendation();
   const handleMovieClick = () => navigate('/movie');
+
+  // themes for filter buttons
   const decadeOptions = [
     'Classic Pre-1970s',
     'Retro 70s and 80s',
@@ -54,6 +65,8 @@ const WeatherAndMovieDisplay = () => {
     'Modern 2010s',
     '2020s Fresh Hits',
   ];
+
+  // adds/removes decade from filter
   const toggleDecade = (decade) =>
     setSelectedDecades(
       selectedDecades.includes(decade)
@@ -64,8 +77,8 @@ const WeatherAndMovieDisplay = () => {
   const clearDecades = () => setSelectedDecades([]);
 
   return (
-    <div className="app-container">
       <div className={`weather-and-movie-container ${isDarkBackground ? 'dark-text' : 'light-text'}`}>
+       
         {/* First Column: Weather Information */}
         <div className="weather-info-card">
           <div className="weather-header-content">
@@ -113,9 +126,9 @@ const WeatherAndMovieDisplay = () => {
           ) : movie ? (
             <>
               <h4>Recommended Movie: {movie.title}</h4>
+              <br/>
               {movie.poster_path && (
-                <img
-                  className="movie-container"
+                <img className='movie-poster'
                   src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
                   alt={movie.title}
                   onClick={handleMovieClick}
@@ -132,8 +145,9 @@ const WeatherAndMovieDisplay = () => {
 
         {/* Third Column: Filter Buttons */}
         <div className="actions-column">
+          <h2> Filter by decade: </h2>
           {decadeOptions.map((decade) => (
-            <button
+            <button 
               key={decade}
               onClick={() => toggleDecade(decade)}
               className={selectedDecades.includes(decade) ? 'selected' : ''}
@@ -154,7 +168,6 @@ const WeatherAndMovieDisplay = () => {
           )}
         </div>
       </div>
-    </div>
   );
 };
 
