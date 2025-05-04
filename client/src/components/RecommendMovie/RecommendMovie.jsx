@@ -64,10 +64,6 @@ export const RecommendMovie = () => {
     setSelectedDecades([])
   }
 
-  const handleMovieNavigate = () => {
-    navigate('/movie') // Navigate to the MovieDetailsPage
-  }
-
   const condition = weather?.weather?.[0]?.main?.toLowerCase()
   const isClear = condition?.includes('clear')
 
@@ -80,20 +76,26 @@ export const RecommendMovie = () => {
               {movie.title}
             </h3>
             {movie.poster_path && (
-              <img
+              <div className='imagelink'>
+              <a href='/movie'><img
                 className='movie-container'
                 src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
                 alt={movie.title}
                 onClick={handleMovieClick}
               />
+              <button className='learnmore'>
+                Learn more
+              </button>
+              </a>
+              </div>
             )}
           </>
         ) : (
           <p>No movie recommendation available.</p>
         )}
-        <button className='refresh-button' onClick={handleMovieNavigate}>
-          Learn More about this Movie
-        </button>
+
+      
+        
         <button className='refresh-button' onClick={handleShuffle}>
           Give me another option!
         </button>
@@ -130,3 +132,4 @@ export const RecommendMovie = () => {
     </>
   )
 }
+
