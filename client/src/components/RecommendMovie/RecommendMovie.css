@@ -7,10 +7,10 @@
 }
 
 .refresh-button{
-width: 100%;
+max-width: 100%;
 margin-top: 20px;
 padding: 10px 20px;
-background-color: #188cff;
+background-color: #004187;
 color: white;
 font-size: 1rem;
 border: none;
@@ -21,3 +21,21 @@ cursor: pointer;
 .refresh-button:hover {
     background-color: #396fa4;
   }
+
+ 
+  /* .darktext{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1em;
+    font-size:xx-large !important;
+} */
+
+.movieTitle.darkText {
+  color: white !important;
+  border-color: white !important;
+}
+
+.decade-filter.darkText{
+  color: white !important;
+  border-color: white !important;
+}

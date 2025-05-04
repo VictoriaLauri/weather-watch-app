@@ -1,0 +1,87 @@
+.glassbox{
+    background: rgba(255, 255, 255, 0.19);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15.6px);
+    -webkit-backdrop-filter: blur(15.6px);
+    border: 2px solid rgba(255, 255, 255, 0.07);
+    width: 100% !important;
+    height: auto;
+    min-height: 300px;
+    margin: auto;
+    display: flex;
+    flex-direction: row !important;
+    justify-self: center;
+    padding: 8px;
+  }
+
+  .AllInfoMovie {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5em;
+    width: 100%;
+  }
+
+  .AllInfoMovie.darkText h1,
+  .AllInfoMovie.darkText p{
+    color:black;
+  }
+
+  .AllInfoMovie h1{
+    color: white;
+  }
+
+  .movie-details {
+    flex: 1;                  /* takes remaining space */
+    padding-left: 1em;
+    margin: auto 0;           /* vertical center */
+    max-width: 60% !important;
+  }
+
+  hr {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #004187;
+  }
+span{
+    font-weight: 700;
+}
+  .overview{
+    white-space: normal;
+  word-break: break-word;
+
+  text-align: left;
+  }
+  .movieposter {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    max-width: 40%;
+  }
+  
+  .movie-poster {
+    height: 40vh;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  
+
+
+  .back-button {
+    background-color: #004187;
+    color: white;
+    font-weight: 700;
+    border-radius: 25px;
+    height: 31px;
+    margin-top: 2em;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .back-button:hover{
+    background-color:  #396fa4;
+    ;
+  }

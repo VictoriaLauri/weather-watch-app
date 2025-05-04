@@ -24,11 +24,14 @@ const WeatherDisplay = () => {
   const mood = getMoodFromWeather(condition)
   const icon = getIconFromWeather(condition)
 
+  const clear =
+  condition.includes('clear')
+
+  
   return (
-    <>
-      <div className='app-container'>
-        <div className='weather-and-movie-container'>
-          <div className='weather-info-card'>
+    <div className='pagewrap'>
+      <div className={`glassboxmovie ${clear ? '': 'notClearBackgroundText'}`}>
+        <div className='weatherinfo'>
             <div className='weather-header-content'>
               <img className='weather-icon' src={icon} alt='Weather Icon' />
               <p>
@@ -56,21 +59,14 @@ const WeatherDisplay = () => {
               <p>so you should watch something</p>
               <h2>{mood}</h2>
             </div>
-
-            <hr />
-
-            <p className='change-location'>
-              Not in {location}?{' '}
-              <button className='location-button'>Change location.</button>
-            </p>
-          </div>
-
+            </div>
+           
           <div className='movie-info-card'>
             <RecommendMovie />
           </div>
-        </div>
+       
       </div>
-    </>
+    </div>
   )
 }
 

@@ -53,4 +53,5 @@ body, html {
     border-radius: 25px;
     width: 70px;
     height:31px;
+    cursor: pointer;
 }

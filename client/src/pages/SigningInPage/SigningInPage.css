@@ -95,5 +95,9 @@ button:focus {
       box-sizing: border-box;
       margin-top: 1em;
   }
-
- 
+button[type=submit]:hover{
+  background-color: #396fa4 !important;
+}
+.signInLink:hover{
+color: #396fa4;
+}

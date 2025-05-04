@@ -3,25 +3,25 @@
 export function FormatCondition(condition) {
     switch (condition) {
       case 'clear':
-        return 'sunny or clear'
+        return 'Sunny or Clear'
       case 'clouds':
-        return 'cloudy'
+        return 'Cloudy'
       case 'rain':
       case 'drizzle':
-        return 'rainy'
+        return 'Rainy'
       case 'thunderstorm':
-        return 'stormy'
+        return 'Stormy'
       case 'snow':
-        return 'snowy'
+        return 'Snowy'
       case 'mist':
       case 'fog':
       case 'haze':
-        return 'foggy'
+        return 'Foggy'
       case 'smoke':
       case 'dust':
-        return 'hazy'
+        return 'Hazy'
       default:
-        return 'nice'
+        return 'Nice'
     }
   }
 
