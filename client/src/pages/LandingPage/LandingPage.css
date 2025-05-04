@@ -14,7 +14,7 @@
   }
 
   .logo-icon {
-    height: 70px;
+    height: 80px;
     padding-bottom: 4em;
   }
 
@@ -35,85 +35,61 @@
   }
 
  .tagline {
-  font-size: 1.25rem;
+  font-size: 2.25rem;
   margin: 1rem 0;
 }
 
 .description {
     max-width: 600px;
-    font-size: 1.1rem;
+    font-size: 1.20rem;
     line-height: 1.7;
     margin-bottom: 2rem;
   }
 
-  .auth-buttons {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .auth-buttons .btn-primary {
-    background-color: #bee0ff;
-    color: #003366;
-    padding: 0.75rem 1.25rem;
-    border-radius: 8px;
+  .accessInfo{
+    color: #004187;
     font-weight: 700;
-    text-decoration: none;
+    margin-left: 4rem ;
+    font-size: larger;
   }
 
-  .auth-buttons .btn-link {
+  .landing-button{
     color: white;
-    text-decoration: underline;
-    font-size: 1rem;
+    background-color: #004187;
     font-weight: 700;
-  }
-
-  .bottom-section {
-    flex-grow: 1;
-    padding: 60px 100px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: left;
-    color: black;
-    background-size: cover;
-    background-position: center;
-  }
-
-  .guest-label {
-    color: black;
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .location-select select {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-  }
-
-  .btn.secondary {
-    background-color: #1b6ec2;
-    color: white;
-    padding: 0.75rem 1.5rem;
+    width: 400px;
+    height: 45px;
+    border-radius: 25px;
+    font-size: 18px;
     border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
+    box-sizing: border-box;
+    margin-top: 2em;
+    margin-left: 4em;
   }
-
-  .btn-guest {
-    background-color: #236ea5;
-    color: #ffffff;
-    padding: 0.75rem 1.25rem;
-    border-radius: 8px;
+  
+  .landing-buttonSI{
+    color: white;
+    background-color: #004187;
     font-weight: 700;
-    font-size: 1rem;
-    text-decoration: none;
-    margin-top: 1rem;
+    width: 400px;
+    height: 45px;
+    border-radius: 25px;
+    font-size: 18px;
+    border: none;
+    box-sizing: border-box;
+    margin-top: 2em;
+    margin-left: 4em;
+  }
+  .landing-buttonSU{
+    color: white;
+    background-color: #004187;
+    font-weight: 700;
+    width: 400px;
+    height: 45px;
+    border-radius: 25px;
+    font-size: 18px;
+    border: none;
+    box-sizing: border-box;
+    margin-top: 2em;
+    margin-left: 4em;
   }
