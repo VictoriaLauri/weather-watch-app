@@ -41,6 +41,7 @@ const [showPassword, setShowPassword]=useState(false)
   };
   return (
     <BackgroundWrapper backgroundOverride={signinback}>
+      <div className="page-center-wrapper">
     <div className="glassbox">
     <div className="formContainer">
       <h4>Welcome back</h4>
@@ -81,6 +82,7 @@ const [showPassword, setShowPassword]=useState(false)
           <button type="submit">Log In</button>
           <p>New to WeatherWatch? <Link className="signInLink" to='../signup'>Create an account</Link></p>
           </form>
+        </div>
         </div>
         </div>
         </BackgroundWrapper>
