@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import profilebkgd from "../../assets/profilebkgd.png"
 import BackgroundWrapper from '../../components/BackgroundWrapper/BackgroundWrapper';
 import "./ProfilePage.css"
+import profileicon from '../../assets/profile_icon.png'
 
 const ProfilePage = () => {
   const { token, location, country, locationError } = useContext(UserContext);
@@ -130,7 +131,10 @@ useEffect(() => {
   return (
     <BackgroundWrapper backgroundOverride={profilebkgd}>
     <div className="glassbox">
-      <div className="locationbox">
+      <div className="locationbox line">
+       
+       <img src={profileicon} alt="profile icon" /> 
+       
   {location && country ? (
     <p>You are currently in <strong>{location}, {country}</strong>.</p>
   ) : locationError ? (
@@ -139,6 +143,7 @@ useEffect(() => {
     <p>Detecting your location...</p>
   )}
 </div>
+
 
       <div className="formContainer">
       <h1>Profile</h1>
