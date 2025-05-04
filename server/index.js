@@ -24,7 +24,7 @@ app.use(
 app.use(express.json())
 
 //root routes information
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
   res.send(
     "Welcome to the WeatherWatch API! Available routes: /api/auth, /api/movie, /api/recommendation and /weather"
   )

@@ -5,7 +5,7 @@ const UserContext = createContext()
 
 export const UserProvider = ({ children }) => {
   const [coords, setCoords] = useState(null)
-  const [userAge, setUserAge] = useState(25) // Temporary hardcoded age
+  const [userAge, setUserAge] = useState(null) // fetches from database
   const [locationError, setLocationError] = useState(null)
   const [weather, setWeather] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -19,8 +19,8 @@ export const UserProvider = ({ children }) => {
   const [movieError, setMovieError] = useState('')
   const [selectedDecades, setSelectedDecades] = useState([])
   const [token, setToken] = useState(() => localStorage.getItem('token'))
-  const [location,setLocation]=useState(null)
-  const [country,setCountry]=useState(null)
+  const [location, setLocation] = useState(null)
+  const [country, setCountry] = useState(null)
 
   const navigate = useNavigate()
 
@@ -86,8 +86,42 @@ export const UserProvider = ({ children }) => {
     fetchWeather()
   }, [coords])
 
+  useEffect(() => {
+    const fetchUserAge = async () => {
+      try {
+        const response = await fetch(
+          'http://localhost:8000/api/auth/userinfo',
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        if (!response.ok) throw new Error('Failed to fetch user info')
+        const data = await response.json()
+        if (data.age) {
+          console.log('Fetched age from backend:', data.age)
+          setUserAge(data.age)
+        }
+      } catch (err) {
+        console.error('Error fetching user info:', err)
+      }
+    }
+
+    if (token) {
+      fetchUserAge()
+    }
+  }, [token])
+
   const fetchMovieRecommendation = useCallback(async () => {
-    if (!coords || !weather) return
+    if (!coords || !weather || userAge === null || isNaN(userAge)) {
+      console.warn('Data for fetching not ready yet:', {
+        coords,
+        weather,
+        userAge,
+      })
+      return
+    }
     const decadeQuery = selectedDecades.join(',')
 
     try {
@@ -99,7 +133,6 @@ export const UserProvider = ({ children }) => {
       if (!response.ok) throw new Error('Failed to fetch movie data')
       const data = await response.json()
       setMovie(data.movie)
-      console.log(data.movie)
     } catch (err) {
       console.error(err)
       setMovieError('Failed to fetch movie recommendation')
@@ -130,7 +163,7 @@ export const UserProvider = ({ children }) => {
     // redirect to sign-in
     navigate('/signin', { replace: true })
     setTimeout(() => {
-      alert("You have logged out")
+      alert('You have logged out')
     }, 100)
   }
 
