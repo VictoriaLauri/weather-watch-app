@@ -35,7 +35,7 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/signin' element={<SigningInPage />} />
         <Route path='/signup' element={<SigningUpPage />} />
-        <Route path='/watch' element={<HomepageMovieSuggestion />} />
+        <Route path='/watch' element={<ProtectedRoute element={<HomepageMovieSuggestion />} />} />
         <Route path='/movie' element={<MovieInformation />} />
         <Route path='/profile' element={<ProtectedRoute element={<ProfilePage />} />} />
       </Routes>

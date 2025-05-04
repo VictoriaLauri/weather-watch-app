@@ -3,9 +3,14 @@ import { UserContext } from '../../components/context/UserContext';
 import axios from 'axios';
 import {jwtDecode} from 'jwt-decode'
 import { isTokenValid } from '../../utils/tokenUtils';
+import { Link } from 'react-router-dom';
+import profilebkgd from "../../assets/profilebkgd.png"
+import BackgroundWrapper from '../../components/BackgroundWrapper/BackgroundWrapper';
+import "./ProfilePage.css"
+import profileicon from '../../assets/profile_icon.png'
 
 const ProfilePage = () => {
-  const { token } = useContext(UserContext);
+  const { token, location, country, locationError } = useContext(UserContext);
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -124,7 +129,26 @@ useEffect(() => {
   };
 
   return (
-    <div className="profile-page">
+    <BackgroundWrapper backgroundOverride={profilebkgd}>
+    <div className="glassbox">
+      <div className="locationbox line">
+       
+       <img src={profileicon} alt="profile icon" /> 
+       
+  {location && country ? (
+    <p>You are currently in <strong>{location}, {country}</strong>.</p>
+  ) : locationError ? (
+    <p>{locationError}</p>
+  ) : (
+    <p>Detecting your location...</p>
+  )}
+  <Link to='/watch'>
+          <button className='moviesuggestion'>Suggest a movie!</button>
+        </Link> 
+</div>
+
+
+      <div className="formContainer">
       <h1>Profile</h1>
       {message && <p>{message}</p>} {/* Show success or error message */}
       
@@ -132,7 +156,7 @@ useEffect(() => {
        
 
         <div className="form-group">
-          <label htmlFor="username">Username</label>
+          <label className='label' htmlFor="username">Username</label>
           <input
             type="text"
             id="username"
@@ -144,7 +168,7 @@ useEffect(() => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="email">Email</label>
+          <label className='label' htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
@@ -156,7 +180,7 @@ useEffect(() => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">New Password</label>
+          <label className='label' htmlFor="password">New Password</label>
           <input
             type="password"
             id="password"
@@ -167,7 +191,7 @@ useEffect(() => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="currentPassword">Enter current password to confirm changes</label>
+          <label className='label' htmlFor="currentPassword">Confirm password for changes</label>
           <input
             type="password"
             id="currentPassword"
@@ -182,7 +206,9 @@ useEffect(() => {
         <button type="submit" className="edit-profile-btn">
           Update Profile
         </button>
+         
       </form>
+      </div>
 
       {/* Display changes made */}
       <div className="changes-summary">
@@ -191,6 +217,8 @@ useEffect(() => {
         {changedFields.password && <p>Password updated.</p>}
       </div>
     </div>
+  ); </BackgroundWrapper>
+
   );
 };
 

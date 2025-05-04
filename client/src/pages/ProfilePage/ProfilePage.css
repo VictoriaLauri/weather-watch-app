@@ -1,0 +1,107 @@
+.glassbox {
+    background: rgba(255, 255, 255, 0.19);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15.6px);
+    -webkit-backdrop-filter: blur(15.6px);
+    border: 2px solid rgba(255, 255, 255, 0.07);
+    width: 40%;
+    height: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    padding: 8px;
+  }
+
+  .formContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    margin: 0 auto;
+}
+
+form {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 1em !important;
+    
+  }
+  input {
+    font-size: 18px;
+    text-indent: 1em;
+    border: none;
+    box-sizing: border-box;
+    width: 400px;
+    border-radius: 25px;
+    height: 64px;
+    margin-top: 10px;
+  }
+  h1 {
+    font-weight: 700;
+    font-size: 40px;
+    width: 100%;
+    color: #004187;
+    text-align: left;
+    margin-top: 10%;
+  }
+.locationbox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+}
+
+.locationbox p {
+    color: white;
+    width: 100%;
+    padding-left: 1em;
+    font-size: large;
+  }
+.line{
+   border-bottom: 2px solid #004187;
+}
+
+input:focus,
+button:focus {
+  outline-color: #004187;
+}
+
+:placeholder-shown {
+  font-size: large;
+  padding-left: 16px;
+}
+
+.label{
+    color:#004187;  
+    font-weight: 700;
+    padding-left: 1em !important;
+    font-size: large;
+}
+.moviesuggestion{
+    background-color: #004187;
+    color: white;
+    font-weight: 700;
+    border-radius: 25px;
+    width: 150px;
+    height:30px
+
+}
+
+button[type=submit]{
+    color: white !important;
+    background-color: #004187 !important;
+    font-weight: 700;
+    width: 400px;
+    height: 45px;
+    border-radius: 30px !important;
+    font-size: 18px;
+    border: none;
+    box-sizing: border-box;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}

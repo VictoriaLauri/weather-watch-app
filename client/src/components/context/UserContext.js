@@ -19,6 +19,8 @@ export const UserProvider = ({ children }) => {
   const [movieError, setMovieError] = useState('')
   const [selectedDecades, setSelectedDecades] = useState([])
   const [token, setToken] = useState(() => localStorage.getItem('token'))
+  const [location,setLocation]=useState(null)
+  const [country,setCountry]=useState(null)
 
   const navigate = useNavigate()
 
@@ -70,7 +72,8 @@ export const UserProvider = ({ children }) => {
         const data = await response.json()
 
         console.log('Weather data:', data)
-
+        setLocation(data.name)
+        setCountry(data.sys.country)
         setWeather(data)
         setLoading(false)
       } catch (err) {
@@ -125,7 +128,10 @@ export const UserProvider = ({ children }) => {
     setToken(null)
     setMovie(null)
     // redirect to sign-in
-    navigate('/', { replace: true })
+    navigate('/signin', { replace: true })
+    setTimeout(() => {
+      alert("You have logged out")
+    }, 100)
   }
 
   return (
@@ -145,6 +151,8 @@ export const UserProvider = ({ children }) => {
         setSelectedDecades,
         token,
         setToken,
+        location,
+        country,
         login,
         logout,
       }}
