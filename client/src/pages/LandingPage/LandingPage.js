@@ -31,14 +31,14 @@ const LandingPage = () => {
         {!token ?(
           <>
         <Link to='/signup'>
-          <button className='landing-buttonSU'>Sign Up</button>
+          <button className='landing-buttonSU' title='Click here to sign up'>Sign Up</button>
         </Link>
         <Link to='/signin'>
-          <button className='landing-buttonSI'>Sign In</button>
+          <button className='landing-buttonSI' title='Click here to sign in'>Sign In</button>
         </Link>
         </> ):( 
         <Link to='/watch'>
-          <button className='landing-button'>Straight to Suggestions</button>
+          <button className='landing-button' title='Click here for your movie suggestion'>Straight to Suggestions</button>
         </Link> 
         )}
       </div>
