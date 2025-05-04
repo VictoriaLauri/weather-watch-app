@@ -17,12 +17,14 @@ export const RecommendMovie = () => {
   } = useContext(UserContext)
   const navigate = useNavigate()
 
+  // Trigger the effect when coordinates, weather, or user age change
   useEffect(() => {
     if (coords && weather && !movie) {
       fetchMovieRecommendation()
     }
-  }, [coords, weather, userAge, movie, fetchMovieRecommendation]) // Trigger the effect when coordinates, weather, or user age change
+  }, [coords, weather, userAge, movie, fetchMovieRecommendation])
 
+  //Logging selected decades to console to show filers are working
   useEffect(() => {
     console.log('Selected Decades:', selectedDecades)
   }, [selectedDecades]) // Sync movie with local storage
@@ -37,7 +39,7 @@ export const RecommendMovie = () => {
   const handleMovieClick = () => {
     navigate('/movie') // Navigate to the MovieDetailsPage
   }
-
+  // Decade options for filtering
   const decadeOptions = [
     'Classic Pre-1970s',
     'Retro 70s and 80s',
@@ -45,7 +47,7 @@ export const RecommendMovie = () => {
     'Modern 2010s',
     'Fresh Hits 2020s',
   ]
-
+  // Function to handle decade selection
   const toggleDecade = (decade) => {
     if (selectedDecades.includes(decade)) {
       setSelectedDecades(selectedDecades.filter((d) => d !== decade))
@@ -57,7 +59,7 @@ export const RecommendMovie = () => {
   const handleFilter = () => {
     fetchMovieRecommendation() // Trigger the fetch based on selected decades
   }
-
+  //remove selected decades from the filter
   const clearDecades = () => {
     setSelectedDecades([])
   }
@@ -70,7 +72,9 @@ export const RecommendMovie = () => {
       <div className='movieInfoAndChange'>
         {movie ? (
           <>
-            <h3 className={`movieTitle ${isClear ? '' : 'darkText'}`}>{movie.title}</h3>
+            <h3 className={`movieTitle ${isClear ? '' : 'darkText'}`}>
+              {movie.title}
+            </h3>
             {movie.poster_path && (
               <img
                 className='movie-container'
@@ -79,32 +83,39 @@ export const RecommendMovie = () => {
                 onClick={handleMovieClick}
               />
             )}
-             
           </>
         ) : (
           <p>No movie recommendation available.</p>
         )}
-      <p className="clickDetails">CLICK POSTER FOR MOVIE INFORMATION</p>
-      <button className='refresh-button' onClick={handleShuffle}>
-        Give me another option!
-      </button>
+        <p className='clickDetails'>CLICK POSTER FOR MOVIE INFORMATION</p>
+        <button className='refresh-button' onClick={handleShuffle}>
+          Give me another option!
+        </button>
       </div>
       <div className='decade-filters'>
         {decadeOptions.map((decade) => (
           <button
             key={decade}
             onClick={() => toggleDecade(decade)}
-            className={`decade-button ${selectedDecades.includes(decade) ? 'selected' : ''} ${isClear ? '': 'darkText'}`}
+            className={`decade-button ${
+              selectedDecades.includes(decade) ? 'selected' : ''
+            } ${isClear ? '' : 'darkText'}`}
           >
             {decade}
           </button>
         ))}
         {selectedDecades.length > 0 && (
           <>
-            <button onClick={handleFilter} className={`filter-button ${isClear ? '': 'darkText'}`}>
+            <button
+              onClick={handleFilter}
+              className={`filter-button ${isClear ? '' : 'darkText'}`}
+            >
               Filter by Era
             </button>
-            <button onClick={clearDecades} className={`clear-button ${isClear ? '': 'darkText'}`}>
+            <button
+              onClick={clearDecades}
+              className={`clear-button ${isClear ? '' : 'darkText'}`}
+            >
               Clear Filters
             </button>
           </>
