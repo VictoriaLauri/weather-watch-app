@@ -35,7 +35,7 @@ const MovieInformation = () => {
   const condition = weather?.weather?.[0]?.main?.toLowerCase()
   const isClear = condition?.includes("clear")
   return (
-    <>
+    <div className="page-center-wrapper">
       <div className="glassbox">
         {movie ? (
           <div className={`AllInfoMovie ${isClear ? "darkText" : ""}`}>
@@ -80,7 +80,7 @@ const MovieInformation = () => {
           <p>Movie details not found.</p>
         )}
       </div>
-    </>
+    </div>
   )
 }
 

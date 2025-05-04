@@ -1,0 +1,24 @@
+.background-wrapper {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+  }
+  
+  .content-wrapper {
+    position: relative;
+    z-index: 1;
+  }
+  

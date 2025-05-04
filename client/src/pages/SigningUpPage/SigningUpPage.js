@@ -63,6 +63,7 @@ const SigningUpPage = () => {
 
   return (
     <BackgroundWrapper backgroundOverride={signUpBackground}>
+      <div className="page-center-wrapper">
       <div className="glassbox">
         <div className="formContainer">
           <h4>Create account</h4>
@@ -127,6 +128,7 @@ const SigningUpPage = () => {
             </p>
           </form>
         </div>
+      </div>
       </div>
     </BackgroundWrapper>
   );

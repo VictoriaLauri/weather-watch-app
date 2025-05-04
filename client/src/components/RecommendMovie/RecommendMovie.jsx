@@ -64,6 +64,10 @@ export const RecommendMovie = () => {
     setSelectedDecades([])
   }
 
+  const handleMovieNavigate = () => {
+    navigate('/movie') // Navigate to the MovieDetailsPage
+  }
+
   const condition = weather?.weather?.[0]?.main?.toLowerCase()
   const isClear = condition?.includes('clear')
 
@@ -87,7 +91,9 @@ export const RecommendMovie = () => {
         ) : (
           <p>No movie recommendation available.</p>
         )}
-        <p className='clickDetails'>CLICK POSTER FOR MOVIE INFORMATION</p>
+        <button className='refresh-button' onClick={handleMovieNavigate}>
+          Learn More about this Movie
+        </button>
         <button className='refresh-button' onClick={handleShuffle}>
           Give me another option!
         </button>

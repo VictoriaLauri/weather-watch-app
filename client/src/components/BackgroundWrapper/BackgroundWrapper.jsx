@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
+import './BackgroundWrapper.css'
 
 const BackgroundWrapper = ({ children, backgroundOverride }) => {
   const { weather } = useContext(UserContext);
@@ -30,7 +31,17 @@ const BackgroundWrapper = ({ children, backgroundOverride }) => {
 
 
   return (
-    <div
+    <div className="background-wrapper">
+      <div className="background-image"  style={{
+          backgroundImage: `url(${backgroundImage})` }}/>
+        <div className='content-wrapper'>
+        {children}
+        </div>
+        
+
+
+
+    {/* <div
       className='App'
       style={{
         backgroundImage: `url(${backgroundImage})`,
@@ -41,8 +52,9 @@ const BackgroundWrapper = ({ children, backgroundOverride }) => {
         minHeight: '100vh',
         width:'100%'
       }}
-    >
-      {children}
+    // > */}
+
+      {/* {children} */}
     </div>
   );
 };
