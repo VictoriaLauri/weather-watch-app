@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+// fetch weather data from OpenWeatherMap API using latitude and longitude
 export const getWeatherData = async (lat, lon) => {
   const weatherApiKey = process.env.WEATHER_API_KEY
 

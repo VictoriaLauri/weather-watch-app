@@ -63,6 +63,7 @@ export const UserProvider = ({ children }) => {
     }
     console.log('Fetching weather with coords:', coords)
 
+    // HTTP request to fetch weather data from the backend using the coordinates
     const fetchWeather = async () => {
       try {
         const response = await fetch(
@@ -86,6 +87,8 @@ export const UserProvider = ({ children }) => {
     fetchWeather()
   }, [coords])
 
+  // Fetch user age from backend using the token
+  // This is done to ensure that the user age is fetched only once when the token is available
   useEffect(() => {
     const fetchUserAge = async () => {
       try {
@@ -113,6 +116,7 @@ export const UserProvider = ({ children }) => {
     }
   }, [token])
 
+  // Fetch movie recommendation when weather, decades filter and user age are available
   const fetchMovieRecommendation = useCallback(async () => {
     if (!coords || !weather || userAge === null || isNaN(userAge)) {
       console.warn('Data for fetching not ready yet:', {
@@ -133,6 +137,7 @@ export const UserProvider = ({ children }) => {
       if (!response.ok) throw new Error('Failed to fetch movie data')
       const data = await response.json()
       setMovie(data.movie)
+      console.log('Movie recommendation:', data.movie)
     } catch (err) {
       console.error(err)
       setMovieError('Failed to fetch movie recommendation')
@@ -149,6 +154,7 @@ export const UserProvider = ({ children }) => {
     }
   }, [movie])
 
+  //add token to local storage
   const login = (newToken) => {
     localStorage.setItem('token', newToken)
     setToken(newToken)
