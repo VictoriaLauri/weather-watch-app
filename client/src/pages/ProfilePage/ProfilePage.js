@@ -156,7 +156,7 @@ useEffect(() => {
        
 
         <div className="form-group">
-          <label htmlFor="username">Username</label>
+          <label className='label' htmlFor="username">Username</label>
           <input
             type="text"
             id="username"
@@ -168,7 +168,7 @@ useEffect(() => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="email">Email</label>
+          <label className='label' htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
@@ -180,7 +180,7 @@ useEffect(() => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">New Password</label>
+          <label className='label' htmlFor="password">New Password</label>
           <input
             type="password"
             id="password"
@@ -191,7 +191,7 @@ useEffect(() => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="currentPassword">Enter current password to confirm changes</label>
+          <label className='label' htmlFor="currentPassword">Confirm password for changes</label>
           <input
             type="password"
             id="currentPassword"
