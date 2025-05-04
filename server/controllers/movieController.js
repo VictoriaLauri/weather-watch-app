@@ -3,13 +3,13 @@ import { getWeatherData } from '../services/weatherService.js'
 
 export const getMovieRecommendation = async (req, res) => {
   const { lat, lon, age, decades } = req.query
-
+  // Validate the input parameters
   if (!lat || !lon || isNaN(age)) {
     return res
       .status(400)
       .json({ error: 'Missing or invalid lat, lon, or age' })
   }
-
+  // Receive the decades as a comma-separated string and convert it to an array
   const selectedDecades = decades ? decades.split(',') : []
 
   try {
@@ -23,7 +23,7 @@ export const getMovieRecommendation = async (req, res) => {
       age,
       selectedDecades
     )
-
+    // send the weather info and movie recommendation as a response
     res.json({
       weather: weatherCondition,
       movie,

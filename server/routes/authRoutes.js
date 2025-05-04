@@ -93,7 +93,7 @@ router.put('/update', async (req, res) => {
     // Prepare update query
     let query = 'UPDATE users SET'
     const values = []
-
+    // Only update fields that are provided
     if (username) {
       query += ' username = ?,'
       values.push(username)
