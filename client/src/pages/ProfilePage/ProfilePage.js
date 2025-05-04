@@ -142,6 +142,9 @@ useEffect(() => {
   ) : (
     <p>Detecting your location...</p>
   )}
+  <Link to='/watch'>
+          <button className='moviesuggestion'>Suggest a movie!</button>
+        </Link> 
 </div>
 
 
@@ -203,9 +206,7 @@ useEffect(() => {
         <button type="submit" className="edit-profile-btn">
           Update Profile
         </button>
-         <Link to='/watch'>
-          <button className='landing-button'>Suggest a movie!</button>
-        </Link> 
+         
       </form>
       </div>
 
